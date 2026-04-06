@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>The Meridian Viaduct — ARCHITECTURAL BLUEPRINT</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#fdfaf4",
+            "on-secondary": "#f3faff",
+            "surface-container-low": "#fcf8f0",
+            "secondary-fixed-dim": "#bbd9e9",
+            "background": "#fdfbf7",
+            "secondary-fixed": "#c9e7f7",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#e0e7ff",
+            "outline-variant": "#d1d5db",
+            "error": "#9f403d",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#343b53",
+            "on-primary-fixed-variant": "#4b5d70",
+            "inverse-on-surface": "#9a9d9e",
+            "tertiary": "#575e78",
+            "on-secondary-fixed": "#264350",
+            "tertiary-fixed-dim": "#c7ceec",
+            "surface-tint": "#0055FF",
+            "on-error": "#fff7f6",
+            "surface": "#fdfbf7",
+            "inverse-surface": "#0b0f10",
+            "primary-fixed": "#d1e4fb",
+            "on-primary-container": "#002266",
+            "outline": "#727d80",
+            "tertiary-dim": "#4b526c",
+            "on-tertiary-fixed-variant": "#505771",
+            "on-error-container": "#752121",
+            "surface-container-highest": "#f7f1e6",
+            "surface-variant": "#f7f1e6",
+            "primary-fixed-dim": "#c3d6ed",
+            "primary-dim": "#0044cc",
+            "secondary-dim": "#3a5764",
+            "on-secondary-container": "#1e3a8a",
+            "tertiary-fixed": "#d5dcfb",
+            "on-tertiary": "#faf8ff",
+            "surface-container-high": "#faf4e9",
+            "on-surface-variant": "#4b5563",
+            "inverse-primary": "#d1e4fb",
+            "on-secondary-fixed-variant": "#435f6d",
+            "error-dim": "#4e0309",
+            "primary-container": "#e0e7ff",
+            "error-container": "#fe8983",
+            "on-tertiary-container": "#474d67",
+            "on-primary-fixed": "#001a4d",
+            "surface-bright": "#fdfbf7",
+            "primary": "#0055FF",
+            "secondary": "#1e3a8a",
+            "on-background": "#111827",
+            "tertiary-container": "#d5dcfb",
+            "on-surface": "#111827",
+            "surface-dim": "#f3ece0"
+          },
+          borderRadius: {
+            "DEFAULT": "0.375rem",
+            "lg": "0.5rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Manrope"],
+            "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .tonal-transition { transition: background-color 0.3s ease; }
+    .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    /* Mobile menu */
+    #mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 300px; opacity: 1; }
+    /* Lightbox */
+    #lightbox { display: none; }
+    #lightbox.active { display: flex; }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased selection:bg-primary-container selection:text-primary">
+
+  <!-- TopNavBar -->
+  <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-20">
+      <a href="index.html" class="text-lg font-bold tracking-tighter text-on-surface uppercase font-headline">
+        ARCHITECTURAL BLUEPRINT
+      </a>
+      <div class="hidden md:flex items-center space-x-12 font-headline tracking-tight">
+        <a href="index.html#projects" class="text-on-surface-variant hover:text-primary transition-colors">Projects</a>
+        <a href="index.html#about" class="text-on-surface-variant hover:text-primary transition-colors">About</a>
+        <a href="index.html#contact" class="text-on-surface-variant hover:text-primary transition-colors">Contact</a>
+        <a href="index.html#contact" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label text-sm font-bold tracking-tight hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-primary/20 uppercase">
+          Connect
+        </a>
+      </div>
+      <button id="mobile-toggle" class="md:hidden text-on-surface" aria-label="Toggle menu">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-[#fdfbf7]/95 backdrop-blur-md border-t border-gray-200/50">
+      <div class="flex flex-col px-8 py-4 space-y-4">
+        <a href="index.html#projects" class="text-on-surface-variant font-headline font-bold tracking-tight py-2">Projects</a>
+        <a href="index.html#about" class="text-on-surface-variant font-headline tracking-tight py-2">About</a>
+        <a href="index.html#contact" class="text-on-surface-variant font-headline tracking-tight py-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20">
+
+    <!-- Hero Section -->
+    <section class="relative w-full h-[80vh] min-h-[600px] overflow-hidden">
+      <img
+        alt="Project Hero — The Meridian Viaduct"
+        class="w-full h-full object-cover"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4"
+        onerror="this.src='https://placehold.co/1600x900/111827/ffffff?text=The+Meridian+Viaduct'"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+      <!-- Back button -->
+      <a href="index.html" class="absolute top-8 left-8 md:left-24 inline-flex items-center gap-2 text-white/80 hover:text-white font-label text-xs font-bold tracking-widest uppercase transition-colors group">
+        <span class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back</span>
+        All Projects
+      </a>
+      <div class="absolute bottom-20 left-8 md:left-24 max-w-4xl">
+        <span class="inline-block bg-primary text-on-primary font-label font-extrabold text-[0.6875rem] px-4 py-1.5 rounded-full tracking-widest uppercase mb-6 shadow-xl shadow-primary/30">Civic Engineering • 2024</span>
+        <h1 class="font-headline text-white text-5xl md:text-8xl font-extrabold tracking-tighter leading-tight drop-shadow-sm">THE MERIDIAN VIADUCT</h1>
+      </div>
+    </section>
+
+    <!-- Section 1: Key Skills -->
+    <section class="max-w-7xl mx-auto px-8 py-24 border-b border-gray-200/50">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="md:col-span-4">
+          <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4">Core Competencies</h2>
+          <h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Key Skills</h3>
+        </div>
+        <div class="md:col-span-8">
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <li class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-body text-lg text-on-surface-variant">Seismic-Resistant Structural Design</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-body text-lg text-on-surface-variant">Post-Tensioned Concrete Systems</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-body text-lg text-on-surface-variant">BIM Strategy &amp; Lifecycle Management</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-body text-lg text-on-surface-variant">Geotechnical Risk Mitigation</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-body text-lg text-on-surface-variant">Advanced SAP2000 Structural Analysis</span>
+            </li>
+            <li class="flex items-center gap-4">
+              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+              <span class="font-body text-lg text-on-surface-variant">Smart Infrastructure Integration</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 2: Project Overview -->
+    <section class="bg-surface-container py-24">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="max-w-3xl">
+          <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-8">Executive Summary</h2>
+          <h3 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-10 leading-tight">Project Overview</h3>
+          <div class="space-y-6">
+            <p class="font-body text-xl leading-relaxed text-on-surface-variant">
+              The Meridian Viaduct project represents a paradigm shift in seismic-resistant structural design. Spanning 1.2 kilometers across the industrial valley, the structure was conceptualized to serve as a vital lifeline for regional logistics while setting a new benchmark for structural longevity.
+            </p>
+            <p class="font-body text-lg leading-relaxed text-on-surface-variant/80">
+              The primary goal was to create a resilient transport corridor capable of withstanding extreme environmental forces. By integrating a bespoke tuned mass damping system with a post-tensioned segmental concrete approach, the impact has been a 40% reduction in peak dynamic stress, ensuring safety for the next century of civic use.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Visual Documentation (Gallery) -->
+    <section class="bg-surface-container-low py-24 border-y border-gray-200/50">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+          <div>
+            <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4">Gallery</h2>
+            <h3 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter">Visual Documentation</h3>
+          </div>
+          <div class="hidden md:block">
+            <p class="font-body text-on-surface-variant max-w-xs text-sm">A comprehensive look at the structural components and engineering milestones achieved during construction.</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Main Featured Image -->
+          <div class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-2xl shadow-2xl shadow-black/10 group">
+            <img
+              id="gallery-main"
+              alt="Project Main Detail"
+              class="w-full h-full object-cover transition-opacity duration-300"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4"
+              onerror="this.src='https://placehold.co/1400x600/e0e7ff/0055FF?text=Gallery+Image'"
+            />
+            <div class="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+              <span id="gallery-caption" class="bg-surface/90 backdrop-blur-md px-4 py-2 rounded-lg text-[0.625rem] font-extrabold tracking-widest uppercase shadow-sm">
+                FIG 01. Pylon Reinforcement Structure
+              </span>
+              <button
+                id="fullscreen-btn"
+                class="w-10 h-10 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all"
+                aria-label="View fullscreen"
+              >
+                <span class="material-symbols-outlined text-sm">fullscreen</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Thumbnails Row -->
+          <div class="grid grid-cols-4 sm:grid-cols-6 gap-4" id="gallery-thumbs">
+            <!-- thumbnails injected by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Challenges & Solutions -->
+    <section class="max-w-7xl mx-auto px-8 py-24">
+      <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-16">The Engineering Journey</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+        <!-- Challenge 1 -->
+        <div class="bg-surface-container-high p-10 rounded-2xl border border-gray-200/50">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'wght' 700;">warning</span>
+            <h4 class="font-headline font-extrabold text-on-surface text-lg uppercase tracking-tight">Geotechnical Instability</h4>
+          </div>
+          <p class="font-body text-on-surface-variant mb-8 leading-relaxed">
+            The geotechnical survey revealed unexpected limestone cavities during the third phase of construction, threatening the stability of the central support pylons.
+          </p>
+          <div class="bg-primary/5 p-6 rounded-xl border-l-4 border-primary">
+            <span class="font-label text-primary text-[0.625rem] font-extrabold uppercase tracking-widest block mb-2">The Solution</span>
+            <p class="font-body text-on-surface font-semibold italic">
+              We pivoted to a deep-pile foundation strategy, utilizing high-pressure grouting to stabilize the sub-surface without compromising the project timeline.
+            </p>
+          </div>
+        </div>
+
+        <!-- Challenge 2 -->
+        <div class="bg-surface-container-high p-10 rounded-2xl border border-gray-200/50">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'wght' 700;">sensors</span>
+            <h4 class="font-headline font-extrabold text-on-surface text-lg uppercase tracking-tight">Thermal Expansion Drift</h4>
+          </div>
+          <p class="font-body text-on-surface-variant mb-8 leading-relaxed">
+            The extreme temperature fluctuations in the valley caused unpredictable thermal expansion, potentially impacting the precision of the segmental joints.
+          </p>
+          <div class="bg-primary/5 p-6 rounded-xl border-l-4 border-primary">
+            <span class="font-label text-primary text-[0.625rem] font-extrabold uppercase tracking-widest block mb-2">The Solution</span>
+            <p class="font-body text-on-surface font-semibold italic">
+              Developed a custom fiber-optic sensor array embedded within the structural core to provide real-time thermal expansion data, allowing for dynamic joint adjustments.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Navigation CTA -->
+    <section class="max-w-7xl mx-auto px-8 py-32 mb-12 text-center border-t border-gray-200/50">
+      <div class="max-w-xl mx-auto space-y-10">
+        <span class="font-label text-on-surface-variant text-[0.75rem] font-extrabold uppercase tracking-[0.4em]">Next Exploration</span>
+        <h3 class="font-headline text-5xl font-extrabold tracking-tighter uppercase text-on-surface">Nexus Logistics Hub</h3>
+        <a
+          href="project.html?id=nexus"
+          class="inline-flex items-center gap-6 bg-primary text-on-primary px-10 py-5 rounded-xl font-label text-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all active:scale-95 shadow-2xl shadow-primary/30 group"
+        >
+          View Next Project
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-2">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-16 px-8 bg-surface-container-high border-t border-gray-200/60">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <div class="font-headline font-extrabold text-sm tracking-tight text-on-surface">ARCHITECTURAL BLUEPRINT</div>
+        <p class="font-headline text-[0.625rem] font-bold tracking-widest uppercase text-on-surface-variant">
+          © 2024 Julian Vance. All rights reserved.
+        </p>
+      </div>
+      <div class="flex gap-10">
+        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">LinkedIn</a>
+        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">GitHub</a>
+        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div
+    id="lightbox"
+    class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm items-center justify-center"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Image lightbox"
+  >
+    <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors" aria-label="Close lightbox">
+      <span class="material-symbols-outlined text-3xl">close</span>
+    </button>
+    <img id="lightbox-img" src="" alt="Full size gallery image" class="max-w-[90vw] max-h-[90vh] object-contain rounded-xl shadow-2xl"/>
+  </div>
+
+  <script>
+    // ── Gallery data ──────────────────────────────────────────────────────────
+    const galleryImages = [
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4",
+        caption: "FIG 01. Pylon Reinforcement Structure",
+        fallback: "https://placehold.co/1400x600/1e3a8a/ffffff?text=FIG+01"
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAiBa9MQbAePL_U9e0G0IignkGChrQck0b4dhAy9Ol7nbv839E6nNzWgEZMkuQlkfseavvPuMjGBRTi20ol63Mw8watUf0BCgZvS6P_hUbUgf4m_ApHkfoWMj1_jYQy6MxITAE5k0kqV_z9NK86C5t2mOfuPN27VrLwBGEQC0UNd6Pip138i6M4GBkAs3_WUpjNmT-SqLneZ1017bBBdL9asOvfh79mkQiZyLqr0my2sG9yaFNYD1faU2c--elDQtPc2XAiGzqQTKU",
+        caption: "FIG 02. Segmental Span Assembly",
+        fallback: "https://placehold.co/1400x600/0055FF/ffffff?text=FIG+02"
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDtBjuAa0RX4zXLkNoUR1J2r5IvTaaxw2ZAH7lmYoq8xmgo0sPaBfJ0NpVT6E9Ns9k0BBME6nCXcDCQ-WeUvsQH8hlO4BQRQFiP_QfitXgHtDZoDbDEM8EGxKoFADKN7rREyFRCWcpUofQ81VoAsFqsJLsyK013L6jdE2aKunxZ1eMv-jhECweVNZuoNipZKWchWe7VnDb1mPWZbkQAqPNyj7KHYFOSF6cWPALQFuDwoP9cKOjW_p1g8aTXanFD6JWmEga1ZkG4GsU",
+        caption: "FIG 03. Foundation Pile Drilling",
+        fallback: "https://placehold.co/1400x600/111827/ffffff?text=FIG+03"
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSgDPrk2utAoFPrFK6nR9LIhnmn8Q2xm0K6DOWeRKHliH5-su5hTOGvhcqDky03oedg6fopnomgtxTVmgSNKndrVTO7N-gGbISNRTVTCXZ7Ep_lEhw3yd2lAdaTdOGr2rB0i9pYrxitVy7TPwGt_dlPXccMxa2w2AHi1gcycoVi4J5eXQDGq2yhFgkYljBLG1SaToRMj8dzb8bHwJg629fEC0VeJVbYqY04YYZYQnP3KeyzGp7f3SuEboiZt5AX6ZyrZT4dBJWkHI",
+        caption: "FIG 04. Tuned Mass Damper Install",
+        fallback: "https://placehold.co/1400x600/4b5563/ffffff?text=FIG+04"
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW7D0snYm7XusogOvnQ2LI3fVHSy6C1J2wbD7uiEvT1ps17MkYHPPve4hBO2ICdloL9CBGf3Jm0LdtwWRkSUhyO_JijlVpGLe6nW2J1tiz020cvvfpAwS3uOpqlVKN1V8a1VhCe5H5H7zyAxVkIyQ5ks0hq84WpPTS-In0tjPUmg-ZyCG4oocAdHm6pp2XspRzn74PBlSueRHMWIKioYwxf7GyRRZvAAolDHk9mPXAf71tHG_VO2CKTgwMfADhHBsZjOU-Wq5n4ec",
+        caption: "FIG 05. Fiber-Optic Sensor Array",
+        fallback: "https://placehold.co/1400x600/1e3a8a/ffffff?text=FIG+05"
+      },
+      {
+        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4",
+        caption: "FIG 06. Completed Viaduct Overview",
+        fallback: "https://placehold.co/1400x600/0055FF/ffffff?text=FIG+06"
+      }
+    ];
+
+    let activeIndex = 0;
+
+    // ── Render thumbnails ─────────────────────────────────────────────────────
+    const thumbsContainer = document.getElementById('gallery-thumbs');
+    galleryImages.forEach((img, i) => {
+      const btn = document.createElement('button');
+      btn.className = [
+        'relative aspect-square overflow-hidden rounded-xl border-2 transition-all duration-200',
+        i === 0
+          ? 'border-primary ring-4 ring-primary/20 scale-[0.98]'
+          : 'border-transparent opacity-70 hover:opacity-100 hover:border-primary/50'
+      ].join(' ');
+      btn.setAttribute('aria-label', img.caption);
+      btn.innerHTML = `<img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover" onerror="this.src='${img.fallback}'"/>`;
+      btn.addEventListener('click', () => setActive(i));
+      thumbsContainer.appendChild(btn);
+    });
+
+    // ── Switch active gallery image ───────────────────────────────────────────
+    function setActive(index) {
+      activeIndex = index;
+      const main = document.getElementById('gallery-main');
+      const caption = document.getElementById('gallery-caption');
+      const data = galleryImages[index];
+
+      main.style.opacity = '0';
+      setTimeout(() => {
+        main.src = data.src;
+        main.onerror = () => { main.src = data.fallback; };
+        main.alt = data.caption;
+        caption.textContent = data.caption;
+        main.style.opacity = '1';
+      }, 150);
+
+      // Update thumbnail states
+      thumbsContainer.querySelectorAll('button').forEach((btn, i) => {
+        if (i === index) {
+          btn.className = 'relative aspect-square overflow-hidden rounded-xl border-2 border-primary ring-4 ring-primary/20 scale-[0.98] transition-all duration-200';
+        } else {
+          btn.className = 'relative aspect-square overflow-hidden rounded-xl border-2 border-transparent opacity-70 hover:opacity-100 hover:border-primary/50 transition-all duration-200';
+        }
+      });
+    }
+
+    // ── Lightbox ─────────────────────────────────────────────────────────────
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    document.getElementById('fullscreen-btn').addEventListener('click', () => {
+      const data = galleryImages[activeIndex];
+      lightboxImg.src = data.src;
+      lightboxImg.onerror = () => { lightboxImg.src = data.fallback; };
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // ── Mobile menu ───────────────────────────────────────────────────────────
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => menu.classList.toggle('open'));
+    menu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => menu.classList.remove('open')));
+  </script>
+
+</body>
+</html>

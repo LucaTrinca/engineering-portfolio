@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ARCHITECTURAL BLUEPRINT | Engineering Portfolio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container": "#fdfaf4",
+            "on-secondary": "#f3faff",
+            "surface-container-low": "#fcf8f0",
+            "secondary-fixed-dim": "#bbd9e9",
+            "background": "#fdfbf7",
+            "secondary-fixed": "#c9e7f7",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#e0e7ff",
+            "outline-variant": "#d1d5db",
+            "error": "#9f403d",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed": "#343b53",
+            "on-primary-fixed-variant": "#4b5d70",
+            "inverse-on-surface": "#9a9d9e",
+            "tertiary": "#575e78",
+            "on-secondary-fixed": "#264350",
+            "tertiary-fixed-dim": "#c7ceec",
+            "surface-tint": "#0055FF",
+            "on-error": "#fff7f6",
+            "surface": "#fdfbf7",
+            "inverse-surface": "#0b0f10",
+            "primary-fixed": "#d1e4fb",
+            "on-primary-container": "#002266",
+            "outline": "#727d80",
+            "tertiary-dim": "#4b526c",
+            "on-tertiary-fixed-variant": "#505771",
+            "on-error-container": "#752121",
+            "surface-container-highest": "#f7f1e6",
+            "surface-variant": "#f7f1e6",
+            "primary-fixed-dim": "#c3d6ed",
+            "primary-dim": "#0044cc",
+            "secondary-dim": "#3a5764",
+            "on-secondary-container": "#1e3a8a",
+            "tertiary-fixed": "#d5dcfb",
+            "on-tertiary": "#faf8ff",
+            "surface-container-high": "#faf4e9",
+            "on-surface-variant": "#4b5563",
+            "inverse-primary": "#d1e4fb",
+            "on-secondary-fixed-variant": "#435f6d",
+            "error-dim": "#4e0309",
+            "primary-container": "#e0e7ff",
+            "error-container": "#fe8983",
+            "on-tertiary-container": "#474d67",
+            "on-primary-fixed": "#001a4d",
+            "surface-bright": "#fdfbf7",
+            "primary": "#0055FF",
+            "secondary": "#1e3a8a",
+            "on-background": "#111827",
+            "tertiary-container": "#d5dcfb",
+            "on-surface": "#111827",
+            "surface-dim": "#f3ece0"
+          },
+          borderRadius: {
+            "DEFAULT": "0.375rem",
+            "lg": "0.5rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+          fontFamily: {
+            "headline": ["Manrope"],
+            "body": ["Manrope"],
+            "label": ["Manrope"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body { background-color: #fdfbf7; color: #111827; }
+    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    .ghost-shadow:hover { box-shadow: 0px 20px 40px rgba(0, 85, 255, 0.08); }
+    .ghost-border { border: 1px solid rgba(0, 85, 255, 0.1); }
+    /* Mobile menu transition */
+    #mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
+    #mobile-menu.open { max-height: 300px; opacity: 1; }
+  </style>
+</head>
+<body class="font-body selection:bg-primary-container selection:text-primary">
+
+  <!-- TopNavBar -->
+  <nav class="fixed top-0 w-full z-50 bg-[#fdfbf7]/80 backdrop-blur-md border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-20">
+      <a href="index.html" class="text-lg font-bold tracking-tighter text-on-surface uppercase font-headline">
+        ARCHITECTURAL BLUEPRINT
+      </a>
+      <div class="hidden md:flex items-center space-x-12">
+        <a href="#projects" class="text-primary border-b-2 border-primary pb-1 font-headline tracking-tight font-bold">Projects</a>
+        <a href="#about" class="text-on-surface-variant hover:text-primary transition-colors font-headline tracking-tight">About</a>
+        <a href="#contact" class="text-on-surface-variant hover:text-primary transition-colors font-headline tracking-tight">Contact</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="#contact" class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-label text-sm font-bold tracking-tight hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-primary/20">
+          Connect
+        </a>
+        <button id="mobile-toggle" class="md:hidden text-on-surface" aria-label="Toggle menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden bg-[#fdfbf7]/95 backdrop-blur-md border-t border-gray-200/50">
+      <div class="flex flex-col px-8 py-4 space-y-4">
+        <a href="#projects" class="text-primary font-headline font-bold tracking-tight py-2">Projects</a>
+        <a href="#about" class="text-on-surface-variant font-headline tracking-tight py-2">About</a>
+        <a href="#contact" class="text-on-surface-variant font-headline tracking-tight py-2">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-20">
+
+    <!-- Hero Section -->
+    <section id="about" class="bg-surface py-24 md:py-32">
+      <div class="max-w-7xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div class="space-y-8 order-2 md:order-1">
+          <span class="inline-block bg-primary-container text-primary font-label font-extrabold text-[0.75rem] px-4 py-1.5 rounded-full tracking-widest uppercase">
+            Lead Structural Engineer
+          </span>
+          <div class="space-y-6">
+            <h1 class="text-on-surface font-headline font-extrabold text-5xl md:text-7xl leading-tight tracking-tighter">
+              Julian Vance
+            </h1>
+            <p class="text-on-surface-variant font-body text-xl leading-relaxed max-w-lg">
+              An interdisciplinary engineer specializing in high-frequency structural systems and sustainable urban infrastructure. Bridging the gap between technical rigor and aesthetic refinement for over a decade.
+            </p>
+            <div class="pt-4 flex flex-wrap gap-4">
+              <a href="#projects" class="bg-primary text-on-primary px-8 py-4 rounded-lg font-label text-sm font-bold tracking-widest uppercase hover:brightness-110 transition-all shadow-xl shadow-primary/25">
+                View Portfolio
+              </a>
+              <a href="#contact" class="border-2 border-primary text-primary px-8 py-4 rounded-lg font-label text-sm font-bold tracking-widest uppercase hover:bg-primary hover:text-white transition-all">
+                Get In Touch
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 md:order-2">
+          <div class="aspect-[4/5] bg-surface-container rounded-xl overflow-hidden ghost-border shadow-2xl relative">
+            <div class="absolute inset-0 bg-primary/5 mix-blend-multiply pointer-events-none z-10"></div>
+            <img
+              alt="Julian Vance Professional Headshot"
+              class="w-full h-full object-cover grayscale brightness-105 contrast-[1.05]"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuByKFMAkQR9wCvyoARCdv90yHs4vrVEQ0RM9s6ya9ZuKjOOS12UiAX3EnfJ-cMAfd4sr81lWqeWtOWTaBOpKC8bp2Wb5wHZtI9VM4iFg2hh-5VWin9qAtUTBwyh-XUs_rjD_u7CrZCMDwJfEh64CfImYnfgGVbmifIVFWYojuhKZG0F5ceaUYLewVkAvHvJtd4sXO9-CDqefnbvUk832x2ayxV12OpDAUJX9KlxLPXnkNVsKwUG0wpa97Joi8HzXV5NIRzRrpm1sF8"
+              onerror="this.src='https://placehold.co/480x600/e0e7ff/0055FF?text=Photo'"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Bar -->
+    <section class="bg-surface-container border-y border-gray-200/50">
+      <div class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-primary mb-1">12+</div>
+          <div class="font-label text-[0.75rem] font-bold tracking-widest uppercase text-on-surface-variant">Years Experience</div>
+        </div>
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-primary mb-1">40+</div>
+          <div class="font-label text-[0.75rem] font-bold tracking-widest uppercase text-on-surface-variant">Projects Completed</div>
+        </div>
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-primary mb-1">8</div>
+          <div class="font-label text-[0.75rem] font-bold tracking-widest uppercase text-on-surface-variant">Awards Won</div>
+        </div>
+        <div>
+          <div class="font-headline font-extrabold text-4xl text-primary mb-1">3</div>
+          <div class="font-label text-[0.75rem] font-bold tracking-widest uppercase text-on-surface-variant">Countries</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Gallery Section -->
+    <section id="projects" class="py-32 bg-surface">
+      <div class="max-w-7xl mx-auto px-8">
+        <div class="flex justify-between items-end mb-16">
+          <div>
+            <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4">Portfolio</h2>
+            <h3 class="font-headline font-extrabold text-4xl tracking-tight text-on-surface">Selected Projects</h3>
+          </div>
+          <a href="#projects" class="hidden md:block font-label font-extrabold text-sm text-primary underline underline-offset-8 decoration-2 hover:text-primary-dim transition-colors">EXPLORE ARCHIVE</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Project Card 01 -->
+          <a href="project.html?id=horizon" class="group relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-variant cursor-pointer ghost-shadow transition-all duration-500 shadow-sm border border-gray-100">
+            <img
+              alt="Project Horizon"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiBa9MQbAePL_U9e0G0IignkGChrQck0b4dhAy9Ol7nbv839E6nNzWgEZMkuQlkfseavvPuMjGBRTi20ol63Mw8watUf0BCgZvS6P_hUbUgf4m_ApHkfoWMj1_jYQy6MxITAE5k0kqV_z9NK86C5t2mOfuPN27VrLwBGEQC0UNd6Pip138i6M4GBkAs3_WUpjNmT-SqLneZ1017bBBdL9asOvfh79mkQiZyLqr0my2sG9yaFNYD1faU2c--elDQtPc2XAiGzqQTKU"
+              onerror="this.src='https://placehold.co/800x500/e0e7ff/0055FF?text=Project+Horizon'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:from-primary/90 transition-all duration-500"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10">
+              <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <span class="text-white/70 font-label text-[0.625rem] font-bold tracking-[0.3em] uppercase mb-2 block">2024 / SYSTEMS</span>
+                <h4 class="text-white font-headline font-bold text-3xl tracking-tight mb-6">Project Horizon</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <span class="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-lg font-label text-xs font-bold tracking-widest uppercase">
+                    View Project
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project Card 02 -->
+          <a href="project.html?id=glass-monolith" class="group relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-variant cursor-pointer ghost-shadow transition-all duration-500 shadow-sm border border-gray-100">
+            <img
+              alt="The Glass Monolith"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtBjuAa0RX4zXLkNoUR1J2r5IvTaaxw2ZAH7lmYoq8xmgo0sPaBfJ0NpVT6E9Ns9k0BBME6nCXcDCQ-WeUvsQH8hlO4BQRQFiP_QfitXgHtDZoDbDEM8EGxKoFADKN7rREyFRCWcpUofQ81VoAsFqsJLsyK013L6jdE2aKunxZ1eMv-jhECweVNZuoNipZKWchWe7VnDb1mPWZbkQAqPNyj7KHYFOSF6cWPALQFuDwoP9cKOjW_p1g8aTXanFD6JWmEga1ZkG4GsU"
+              onerror="this.src='https://placehold.co/800x500/e0e7ff/0055FF?text=The+Glass+Monolith'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:from-primary/90 transition-all duration-500"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10">
+              <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <span class="text-white/70 font-label text-[0.625rem] font-bold tracking-[0.3em] uppercase mb-2 block">2023 / ARCHITECTURE</span>
+                <h4 class="text-white font-headline font-bold text-3xl tracking-tight mb-6">The Glass Monolith</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <span class="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-lg font-label text-xs font-bold tracking-widest uppercase">
+                    View Project
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project Card 03 -->
+          <a href="project.html?id=meridian-viaduct" class="group relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-variant cursor-pointer ghost-shadow transition-all duration-500 shadow-sm border border-gray-100">
+            <img
+              alt="The Meridian Viaduct"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4"
+              onerror="this.src='https://placehold.co/800x500/e0e7ff/0055FF?text=Meridian+Viaduct'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:from-primary/90 transition-all duration-500"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10">
+              <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <span class="text-white/70 font-label text-[0.625rem] font-bold tracking-[0.3em] uppercase mb-2 block">2022 / INFRASTRUCTURE</span>
+                <h4 class="text-white font-headline font-bold text-3xl tracking-tight mb-6">The Meridian Viaduct</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <span class="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-lg font-label text-xs font-bold tracking-widest uppercase">
+                    View Project
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Project Card 04 -->
+          <a href="project.html?id=vortex" class="group relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-variant cursor-pointer ghost-shadow transition-all duration-500 shadow-sm border border-gray-100">
+            <img
+              alt="Vortex Energy Plant"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW7D0snYm7XusogOvnQ2LI3fVHSy6C1J2wbD7uiEvT1ps17MkYHPPve4hBO2ICdloL9CBGf3Jm0LdtwWRkSUhyO_JijlVpGLe6nW2J1tiz020cvvfpAwS3uOpqlVKN1V8a1VhCe5H5H7zyAxVkIyQ5ks0hq84WpPTS-In0tjPUmg-ZyCG4oocAdHm6pp2XspRzn74PBlSueRHMWIKioYwxf7GyRRZvAAolDHk9mPXAf71tHG_VO2CKTgwMfADhHBsZjOU-Wq5n4ec"
+              onerror="this.src='https://placehold.co/800x500/e0e7ff/0055FF?text=Vortex+Energy+Plant'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:from-primary/90 transition-all duration-500"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10">
+              <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <span class="text-white/70 font-label text-[0.625rem] font-bold tracking-[0.3em] uppercase mb-2 block">2022 / INDUSTRIAL</span>
+                <h4 class="text-white font-headline font-bold text-3xl tracking-tight mb-6">Vortex Energy Plant</h4>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <span class="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-lg font-label text-xs font-bold tracking-widest uppercase">
+                    View Project
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-surface-container py-32 border-t border-gray-200/50">
+      <div class="max-w-7xl mx-auto px-8 text-center">
+        <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-6">Get In Touch</h2>
+        <h3 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface mb-8 max-w-2xl mx-auto leading-tight">
+          Let's Build Something Together
+        </h3>
+        <p class="text-on-surface-variant font-body text-xl max-w-xl mx-auto mb-12 leading-relaxed">
+          Available for structural engineering consultations, collaborative projects, and speaking engagements.
+        </p>
+        <a
+          href="mailto:julian@example.com"
+          class="inline-flex items-center gap-3 bg-primary text-on-primary px-10 py-5 rounded-xl font-label text-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all active:scale-95 shadow-2xl shadow-primary/30 group"
+        >
+          Send a Message
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full py-16 px-8 bg-surface-container-high border-t border-gray-200/60">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
+      <div class="flex flex-col items-center md:items-start gap-2">
+        <div class="font-headline font-extrabold text-sm tracking-tight text-on-surface">ARCHITECTURAL BLUEPRINT</div>
+        <p class="font-headline text-[0.625rem] font-bold tracking-widest uppercase text-on-surface-variant">
+          © 2024 Julian Vance. All rights reserved.
+        </p>
+      </div>
+      <div class="flex gap-10">
+        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">LinkedIn</a>
+        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">GitHub</a>
+        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+    // Close mobile menu on link click
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.remove('open'));
+    });
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        const target = document.querySelector(anchor.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
