@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>The Meridian Viaduct — ARCHITECTURAL BLUEPRINT</title>
+  <title>Project — Luca Trinca</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
@@ -84,10 +84,8 @@
     .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
     .tonal-transition { transition: background-color 0.3s ease; }
     .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-    /* Mobile menu */
     #mobile-menu { transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0; overflow: hidden; }
     #mobile-menu.open { max-height: 300px; opacity: 1; }
-    /* Lightbox */
     #lightbox { display: none; }
     #lightbox.active { display: flex; }
   </style>
@@ -98,7 +96,7 @@
   <nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-gray-200/50">
     <div class="max-w-7xl mx-auto flex justify-between items-center px-8 h-20">
       <a href="index.html" class="text-lg font-bold tracking-tighter text-on-surface uppercase font-headline">
-        ARCHITECTURAL BLUEPRINT
+        Luca Trinca
       </a>
       <div class="hidden md:flex items-center space-x-12 font-headline tracking-tight">
         <a href="index.html#projects" class="text-on-surface-variant hover:text-primary transition-colors">Projects</a>
@@ -112,7 +110,6 @@
         <span class="material-symbols-outlined">menu</span>
       </button>
     </div>
-    <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden bg-[#fdfbf7]/95 backdrop-blur-md border-t border-gray-200/50">
       <div class="flex flex-col px-8 py-4 space-y-4">
         <a href="index.html#projects" class="text-on-surface-variant font-headline font-bold tracking-tight py-2">Projects</a>
@@ -127,20 +124,19 @@
     <!-- Hero Section -->
     <section class="relative w-full h-[80vh] min-h-[600px] overflow-hidden">
       <img
-        alt="Project Hero — The Meridian Viaduct"
+        id="hero-img"
+        alt="Project Hero"
         class="w-full h-full object-cover"
-        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4"
-        onerror="this.src='https://placehold.co/1600x900/111827/ffffff?text=The+Meridian+Viaduct'"
+        src=""
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-      <!-- Back button -->
       <a href="index.html" class="absolute top-8 left-8 md:left-24 inline-flex items-center gap-2 text-white/80 hover:text-white font-label text-xs font-bold tracking-widest uppercase transition-colors group">
         <span class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back</span>
         All Projects
       </a>
       <div class="absolute bottom-20 left-8 md:left-24 max-w-4xl">
-        <span class="inline-block bg-primary text-on-primary font-label font-extrabold text-[0.6875rem] px-4 py-1.5 rounded-full tracking-widest uppercase mb-6 shadow-xl shadow-primary/30">Civic Engineering • 2024</span>
-        <h1 class="font-headline text-white text-5xl md:text-8xl font-extrabold tracking-tighter leading-tight drop-shadow-sm">THE MERIDIAN VIADUCT</h1>
+        <span id="hero-category" class="inline-block bg-primary text-on-primary font-label font-extrabold text-[0.6875rem] px-4 py-1.5 rounded-full tracking-widest uppercase mb-6 shadow-xl shadow-primary/30"></span>
+        <h1 id="hero-title" class="font-headline text-white text-5xl md:text-8xl font-extrabold tracking-tighter leading-tight drop-shadow-sm uppercase"></h1>
       </div>
     </section>
 
@@ -152,31 +148,8 @@
           <h3 class="font-headline text-3xl font-extrabold text-on-surface tracking-tight">Key Skills</h3>
         </div>
         <div class="md:col-span-8">
-          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <li class="flex items-center gap-4">
-              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
-              <span class="font-body text-lg text-on-surface-variant">Seismic-Resistant Structural Design</span>
-            </li>
-            <li class="flex items-center gap-4">
-              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
-              <span class="font-body text-lg text-on-surface-variant">Post-Tensioned Concrete Systems</span>
-            </li>
-            <li class="flex items-center gap-4">
-              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
-              <span class="font-body text-lg text-on-surface-variant">BIM Strategy &amp; Lifecycle Management</span>
-            </li>
-            <li class="flex items-center gap-4">
-              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
-              <span class="font-body text-lg text-on-surface-variant">Geotechnical Risk Mitigation</span>
-            </li>
-            <li class="flex items-center gap-4">
-              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
-              <span class="font-body text-lg text-on-surface-variant">Advanced SAP2000 Structural Analysis</span>
-            </li>
-            <li class="flex items-center gap-4">
-              <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
-              <span class="font-body text-lg text-on-surface-variant">Smart Infrastructure Integration</span>
-            </li>
+          <ul id="skills-list" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <!-- injected by JS -->
           </ul>
         </div>
       </div>
@@ -186,15 +159,13 @@
     <section class="bg-surface-container py-24">
       <div class="max-w-7xl mx-auto px-8">
         <div class="max-w-3xl">
-          <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-8">Executive Summary</h2>
+          <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-8">Summary</h2>
           <h3 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-10 leading-tight">Project Overview</h3>
-          <div class="space-y-6">
-            <p class="font-body text-xl leading-relaxed text-on-surface-variant">
-              The Meridian Viaduct project represents a paradigm shift in seismic-resistant structural design. Spanning 1.2 kilometers across the industrial valley, the structure was conceptualized to serve as a vital lifeline for regional logistics while setting a new benchmark for structural longevity.
-            </p>
-            <p class="font-body text-lg leading-relaxed text-on-surface-variant/80">
-              The primary goal was to create a resilient transport corridor capable of withstanding extreme environmental forces. By integrating a bespoke tuned mass damping system with a post-tensioned segmental concrete approach, the impact has been a 40% reduction in peak dynamic stress, ensuring safety for the next century of civic use.
-            </p>
+          <div id="overview-text" class="space-y-6">
+            <!-- injected by JS -->
+          </div>
+          <div id="project-links" class="mt-10 flex flex-wrap gap-4">
+            <!-- injected by JS if links exist -->
           </div>
         </div>
       </div>
@@ -208,26 +179,18 @@
             <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4">Gallery</h2>
             <h3 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter">Visual Documentation</h3>
           </div>
-          <div class="hidden md:block">
-            <p class="font-body text-on-surface-variant max-w-xs text-sm">A comprehensive look at the structural components and engineering milestones achieved during construction.</p>
-          </div>
         </div>
-
         <div class="space-y-6">
-          <!-- Main Featured Image -->
           <div class="relative w-full aspect-video md:aspect-[21/9] overflow-hidden rounded-2xl shadow-2xl shadow-black/10 group">
             <img
               id="gallery-main"
               alt="Project Main Detail"
               class="w-full h-full object-cover transition-opacity duration-300"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4"
-              onerror="this.src='https://placehold.co/1400x600/e0e7ff/0055FF?text=Gallery+Image'"
+              src=""
             />
             <div class="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent"></div>
             <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-              <span id="gallery-caption" class="bg-surface/90 backdrop-blur-md px-4 py-2 rounded-lg text-[0.625rem] font-extrabold tracking-widest uppercase shadow-sm">
-                FIG 01. Pylon Reinforcement Structure
-              </span>
+              <span id="gallery-caption" class="bg-surface/90 backdrop-blur-md px-4 py-2 rounded-lg text-[0.625rem] font-extrabold tracking-widest uppercase shadow-sm"></span>
               <button
                 id="fullscreen-btn"
                 class="w-10 h-10 rounded-full bg-surface/90 backdrop-blur-md flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all"
@@ -237,11 +200,7 @@
               </button>
             </div>
           </div>
-
-          <!-- Thumbnails Row -->
-          <div class="grid grid-cols-4 sm:grid-cols-6 gap-4" id="gallery-thumbs">
-            <!-- thumbnails injected by JS -->
-          </div>
+          <div class="grid grid-cols-4 sm:grid-cols-6 gap-4" id="gallery-thumbs"></div>
         </div>
       </div>
     </section>
@@ -249,52 +208,19 @@
     <!-- Section 4: Challenges & Solutions -->
     <section class="max-w-7xl mx-auto px-8 py-24">
       <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-16">The Engineering Journey</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-
-        <!-- Challenge 1 -->
-        <div class="bg-surface-container-high p-10 rounded-2xl border border-gray-200/50">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'wght' 700;">warning</span>
-            <h4 class="font-headline font-extrabold text-on-surface text-lg uppercase tracking-tight">Geotechnical Instability</h4>
-          </div>
-          <p class="font-body text-on-surface-variant mb-8 leading-relaxed">
-            The geotechnical survey revealed unexpected limestone cavities during the third phase of construction, threatening the stability of the central support pylons.
-          </p>
-          <div class="bg-primary/5 p-6 rounded-xl border-l-4 border-primary">
-            <span class="font-label text-primary text-[0.625rem] font-extrabold uppercase tracking-widest block mb-2">The Solution</span>
-            <p class="font-body text-on-surface font-semibold italic">
-              We pivoted to a deep-pile foundation strategy, utilizing high-pressure grouting to stabilize the sub-surface without compromising the project timeline.
-            </p>
-          </div>
-        </div>
-
-        <!-- Challenge 2 -->
-        <div class="bg-surface-container-high p-10 rounded-2xl border border-gray-200/50">
-          <div class="flex items-center gap-3 mb-6">
-            <span class="material-symbols-outlined text-primary" style="font-variation-settings:'wght' 700;">sensors</span>
-            <h4 class="font-headline font-extrabold text-on-surface text-lg uppercase tracking-tight">Thermal Expansion Drift</h4>
-          </div>
-          <p class="font-body text-on-surface-variant mb-8 leading-relaxed">
-            The extreme temperature fluctuations in the valley caused unpredictable thermal expansion, potentially impacting the precision of the segmental joints.
-          </p>
-          <div class="bg-primary/5 p-6 rounded-xl border-l-4 border-primary">
-            <span class="font-label text-primary text-[0.625rem] font-extrabold uppercase tracking-widest block mb-2">The Solution</span>
-            <p class="font-body text-on-surface font-semibold italic">
-              Developed a custom fiber-optic sensor array embedded within the structural core to provide real-time thermal expansion data, allowing for dynamic joint adjustments.
-            </p>
-          </div>
-        </div>
-
+      <div id="challenges-grid" class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <!-- injected by JS -->
       </div>
     </section>
 
     <!-- Navigation CTA -->
     <section class="max-w-7xl mx-auto px-8 py-32 mb-12 text-center border-t border-gray-200/50">
       <div class="max-w-xl mx-auto space-y-10">
-        <span class="font-label text-on-surface-variant text-[0.75rem] font-extrabold uppercase tracking-[0.4em]">Next Exploration</span>
-        <h3 class="font-headline text-5xl font-extrabold tracking-tighter uppercase text-on-surface">Nexus Logistics Hub</h3>
+        <span class="font-label text-on-surface-variant text-[0.75rem] font-extrabold uppercase tracking-[0.4em]">Next Project</span>
+        <h3 id="next-title" class="font-headline text-5xl font-extrabold tracking-tighter uppercase text-on-surface"></h3>
         <a
-          href="project.html?id=nexus"
+          id="next-link"
+          href="#"
           class="inline-flex items-center gap-6 bg-primary text-on-primary px-10 py-5 rounded-xl font-label text-sm font-bold uppercase tracking-widest hover:brightness-110 transition-all active:scale-95 shadow-2xl shadow-primary/30 group"
         >
           View Next Project
@@ -309,15 +235,14 @@
   <footer class="w-full py-16 px-8 bg-surface-container-high border-t border-gray-200/60">
     <div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
       <div class="flex flex-col items-center md:items-start gap-2">
-        <div class="font-headline font-extrabold text-sm tracking-tight text-on-surface">ARCHITECTURAL BLUEPRINT</div>
+        <div class="font-headline font-extrabold text-sm tracking-tight text-on-surface">Luca Trinca</div>
         <p class="font-headline text-[0.625rem] font-bold tracking-widest uppercase text-on-surface-variant">
-          © 2024 Julian Vance. All rights reserved.
+          © 2024 Luca Trinca. All rights reserved.
         </p>
       </div>
       <div class="flex gap-10">
-        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">LinkedIn</a>
-        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">GitHub</a>
-        <a href="#" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">Instagram</a>
+        <a href="https://github.com/lucatrinca" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">GitHub</a>
+        <a href="mailto:Lucatrinca37@gmail.com" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">Email</a>
       </div>
     </div>
   </footer>
@@ -337,43 +262,270 @@
   </div>
 
   <script>
-    // ── Gallery data ──────────────────────────────────────────────────────────
-    const galleryImages = [
-      {
-        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4",
-        caption: "FIG 01. Pylon Reinforcement Structure",
-        fallback: "https://placehold.co/1400x600/1e3a8a/ffffff?text=FIG+01"
+    // ── Project data ──────────────────────────────────────────────────────────
+    const projects = {
+      'electric-piano': {
+        title: 'Electric Piano',
+        category: 'Arduino / Fabrication',
+        heroImage: 'https://placehold.co/1600x900/111827/ffffff?text=Electric+Piano',
+        skills: [
+          'Programming in C/C++ (Arduino)',
+          'CAD Modeling & 3D Printing',
+          'Hands-on Fabrication (drill press, band saw, belt sander)',
+          'Circuit Design & Prototyping',
+          'Design Iteration & Problem-Solving',
+        ],
+        overview: [
+          'I designed and fabricated a functional Electric Piano using scrap wood, 3D-printed components, and an Arduino microcontroller.',
+          'The project integrated mechanical design with electronic systems, emphasizing iterative problem-solving and extending hardware capabilities through software libraries.',
+        ],
+        links: [],
+        gallery: [
+          { caption: 'FIG 01. Final Product', src: 'https://placehold.co/1400x600/e0e7ff/0055FF?text=Final+Product' },
+          { caption: 'FIG 02. Side View (In Progress)', src: 'https://placehold.co/1400x600/1e3a8a/ffffff?text=Side+View' },
+          { caption: 'FIG 03. CAD Model – White Keys', src: 'https://placehold.co/1400x600/0055FF/ffffff?text=CAD+Model' },
+          { caption: 'FIG 04. Key Mechanism – Black Keys', src: 'https://placehold.co/1400x600/111827/ffffff?text=Key+Mechanism' },
+          { caption: 'FIG 05. Circuit Design (Arduino)', src: 'https://placehold.co/1400x600/4b5563/ffffff?text=Circuit+Design' },
+        ],
+        challenges: [
+          {
+            icon: 'build',
+            title: 'Precision in Fabrication',
+            problem: 'Achieving consistent measurements and cuts across scrap wood pieces with varying dimensions required careful planning before each fabrication step.',
+            solution: 'Refined blueprinting and measurement techniques prior to any cutting or drilling, reducing material waste and improving fit.',
+          },
+          {
+            icon: 'music_note',
+            title: 'Polyphony',
+            problem: 'The Arduino\'s default tone library only supports a single note at a time, making simultaneous key presses produce incorrect or no sound.',
+            solution: 'Implemented the "Mozzi" audio synthesis library to enable polyphonic output and richer sound generation from the microcontroller.',
+          },
+          {
+            icon: 'balance',
+            title: 'Counterweight Calibration',
+            problem: '3D-printed keys had inconsistent return force, causing some keys to stick or return too slowly after being pressed.',
+            solution: 'Iterative testing of counterweight placement and mass to achieve optimal key balance and consistent tactile response.',
+          },
+          {
+            icon: 'warning',
+            title: 'False Triggering',
+            problem: 'Vibrations from adjacent keys caused unintended sensor triggers, producing phantom notes.',
+            solution: 'Combined calibrated counterweights with refined software debouncing logic to eliminate false inputs.',
+          },
+        ],
+        next: { id: 'prosthetic-hand', title: 'Prosthetic Hand Extension' },
       },
-      {
-        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAiBa9MQbAePL_U9e0G0IignkGChrQck0b4dhAy9Ol7nbv839E6nNzWgEZMkuQlkfseavvPuMjGBRTi20ol63Mw8watUf0BCgZvS6P_hUbUgf4m_ApHkfoWMj1_jYQy6MxITAE5k0kqV_z9NK86C5t2mOfuPN27VrLwBGEQC0UNd6Pip138i6M4GBkAs3_WUpjNmT-SqLneZ1017bBBdL9asOvfh79mkQiZyLqr0my2sG9yaFNYD1faU2c--elDQtPc2XAiGzqQTKU",
-        caption: "FIG 02. Segmental Span Assembly",
-        fallback: "https://placehold.co/1400x600/0055FF/ffffff?text=FIG+02"
-      },
-      {
-        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDtBjuAa0RX4zXLkNoUR1J2r5IvTaaxw2ZAH7lmYoq8xmgo0sPaBfJ0NpVT6E9Ns9k0BBME6nCXcDCQ-WeUvsQH8hlO4BQRQFiP_QfitXgHtDZoDbDEM8EGxKoFADKN7rREyFRCWcpUofQ81VoAsFqsJLsyK013L6jdE2aKunxZ1eMv-jhECweVNZuoNipZKWchWe7VnDb1mPWZbkQAqPNyj7KHYFOSF6cWPALQFuDwoP9cKOjW_p1g8aTXanFD6JWmEga1ZkG4GsU",
-        caption: "FIG 03. Foundation Pile Drilling",
-        fallback: "https://placehold.co/1400x600/111827/ffffff?text=FIG+03"
-      },
-      {
-        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBSgDPrk2utAoFPrFK6nR9LIhnmn8Q2xm0K6DOWeRKHliH5-su5hTOGvhcqDky03oedg6fopnomgtxTVmgSNKndrVTO7N-gGbISNRTVTCXZ7Ep_lEhw3yd2lAdaTdOGr2rB0i9pYrxitVy7TPwGt_dlPXccMxa2w2AHi1gcycoVi4J5eXQDGq2yhFgkYljBLG1SaToRMj8dzb8bHwJg629fEC0VeJVbYqY04YYZYQnP3KeyzGp7f3SuEboiZt5AX6ZyrZT4dBJWkHI",
-        caption: "FIG 04. Tuned Mass Damper Install",
-        fallback: "https://placehold.co/1400x600/4b5563/ffffff?text=FIG+04"
-      },
-      {
-        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCW7D0snYm7XusogOvnQ2LI3fVHSy6C1J2wbD7uiEvT1ps17MkYHPPve4hBO2ICdloL9CBGf3Jm0LdtwWRkSUhyO_JijlVpGLe6nW2J1tiz020cvvfpAwS3uOpqlVKN1V8a1VhCe5H5H7zyAxVkIyQ5ks0hq84WpPTS-In0tjPUmg-ZyCG4oocAdHm6pp2XspRzn74PBlSueRHMWIKioYwxf7GyRRZvAAolDHk9mPXAf71tHG_VO2CKTgwMfADhHBsZjOU-Wq5n4ec",
-        caption: "FIG 05. Fiber-Optic Sensor Array",
-        fallback: "https://placehold.co/1400x600/1e3a8a/ffffff?text=FIG+05"
-      },
-      {
-        src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCo4dt3fKNHVwUpB2m8aQ1-h58QmHzl5sJKuscip1h2XyFRIw4fUZbnobQR-txs-rnLuF89Gf28ZIMcc5GUIjHLAlyORD1JL6nMTY9jH50w4Yqlvg1g9UKrJ5XeLMOLlfSOdnbGLffiOjAwJUj1sFAE8kKTH1pm7lkD9xwe7IBWUQ4OWCws1cml7LUrWur7b3ZnnCXtFjkj5ujjSTUCm1iFwfq07ha9pXBUBrZsOS3XKWVcw0R3_Yu9aOtcSWGQIvrm3cIyg_YSNN4",
-        caption: "FIG 06. Completed Viaduct Overview",
-        fallback: "https://placehold.co/1400x600/0055FF/ffffff?text=FIG+06"
-      }
-    ];
 
+      'prosthetic-hand': {
+        title: 'Prosthetic Hand Extension',
+        category: 'SolidWorks / Prototyping',
+        heroImage: 'https://placehold.co/1600x900/111827/ffffff?text=Prosthetic+Hand+Extension',
+        skills: [
+          'SolidWorks CAD Modeling',
+          'Material Selection for Mechanical Performance',
+          'Testing Procedure Design & Execution',
+          'Iterative Prototyping & Optimization',
+          'Biomedical Problem-Solving',
+        ],
+        overview: [
+          'A mechanical prosthetic hand prototype designed using SolidWorks CAD modeling to enhance finger movement and gripping capability. The hand was mounted to the end of a shaft, creating an arm extension operated through a system of cables and elastic bands.',
+          'This project served as a proof-of-concept for exploring prosthetic kinematics and material performance, demonstrating CAD application in biomedical design and the importance of incorporating manufacturing tolerances.',
+        ],
+        links: [],
+        gallery: [
+          { caption: 'FIG 01. Final Prosthetic Hand', src: 'https://placehold.co/1400x600/e0e7ff/0055FF?text=Final+Hand' },
+          { caption: 'FIG 02. CAD Model', src: 'https://placehold.co/1400x600/1e3a8a/ffffff?text=CAD+Model' },
+          { caption: 'FIG 03. Finger Mechanism (Front View)', src: 'https://placehold.co/1400x600/0055FF/ffffff?text=Finger+Mechanism' },
+          { caption: 'FIG 04. Testing Phase', src: 'https://placehold.co/1400x600/4b5563/ffffff?text=Testing+Phase' },
+        ],
+        challenges: [
+          {
+            icon: 'settings_motion_mode',
+            title: 'Finger Contraction',
+            problem: 'The original single-channel tendon design restricted finger movement range, preventing full curl and adequate grip closure.',
+            solution: 'Added a second tendon channel per finger, enabling improved range of motion beyond the constraints of the original design.',
+          },
+          {
+            icon: 'straighten',
+            title: 'Manufacturing Tolerances',
+            problem: 'Tight joint clearances in the initial CAD model caused binding at pin holes, preventing smooth articulation after printing.',
+            solution: 'Refined CAD models with appropriate tolerance gaps to ensure smooth motion and real-world manufacturability around joints and pin holes.',
+          },
+          {
+            icon: 'grip_lamp',
+            title: 'Grip Strength',
+            problem: 'Smooth finger surfaces could not maintain grip on objects heavier than approximately 200g, causing items to slip.',
+            solution: 'Applied higher-friction materials to finger contact surfaces to improve grip reliability across a wider range of object weights.',
+          },
+          {
+            icon: 'edit',
+            title: 'Object Handling',
+            problem: 'The original palm geometry was too wide to grasp narrow objects such as pencils or pens reliably.',
+            solution: 'Modified palm geometry in SolidWorks to taper the grip profile, enabling secure handling of narrow cylindrical objects.',
+          },
+        ],
+        next: { id: 'automated-claw', title: 'Automated Claw' },
+      },
+
+      'automated-claw': {
+        title: 'Automated Claw',
+        category: 'Arduino / Sheet Metal',
+        heroImage: 'https://placehold.co/1600x900/111827/ffffff?text=Automated+Claw',
+        skills: [
+          'Programming in C/C++ (Arduino)',
+          'Sensor Integration for Automation',
+          'Sheet Metal Fabrication',
+          'Technical Drawing & Prototyping',
+          'Iterative Testing & Problem-Solving',
+        ],
+        overview: [
+          'Designed and built an automated retrieval device for the APSC 101 engineering competition. The device featured a sheet metal frame and claw mechanism, controlled by an Arduino-based system using ultrasonic sensors to guide claw actuation.',
+          'I was primarily responsible for programming the Arduino control system, developing reliable code to automate the retrieval process. The team achieved a top-10 placement in the final competition.',
+        ],
+        links: [],
+        gallery: [
+          { caption: 'FIG 01. Final Device', src: 'https://placehold.co/1400x600/e0e7ff/0055FF?text=Final+Device' },
+          { caption: 'FIG 02. CAD Model', src: 'https://placehold.co/1400x600/1e3a8a/ffffff?text=CAD+Model' },
+          { caption: 'FIG 03. Claw Mechanism', src: 'https://placehold.co/1400x600/0055FF/ffffff?text=Claw+Mechanism' },
+          { caption: 'FIG 04. Testing Phase', src: 'https://placehold.co/1400x600/4b5563/ffffff?text=Testing+Phase' },
+        ],
+        challenges: [
+          {
+            icon: 'sensors',
+            title: 'Sensor Noise',
+            problem: 'Ultrasonic sensor readings contained noisy outliers that caused the claw to actuate at incorrect distances, leading to missed retrieval attempts.',
+            solution: 'Implemented software debouncing to filter outlier readings, stabilizing the sensor input and preventing false triggers.',
+          },
+          {
+            icon: 'center_focus_strong',
+            title: 'Claw Alignment',
+            problem: 'The claw jaws failed to close completely and symmetrically due to servo motor placement, resulting in inconsistent gripping.',
+            solution: 'Reoriented the servo motor mounting position to correct the jaw alignment, achieving secure and repeatable gripping.',
+          },
+          {
+            icon: 'speed',
+            title: 'Retrieval Efficiency',
+            problem: 'Initial control logic was too slow to retrieve the maximum number of foam cubes within the competition time limit.',
+            solution: 'Optimized control logic flow and servo timing parameters to minimize cycle time and maximize retrieval count per run.',
+          },
+        ],
+        next: { id: 'poker-calculator', title: 'Poker Odds Calculator' },
+      },
+
+      'poker-calculator': {
+        title: 'Poker Odds Calculator',
+        category: 'C / WebAssembly',
+        heroImage: 'https://placehold.co/1600x900/111827/ffffff?text=Poker+Odds+Calculator',
+        skills: [
+          'Low-level C Programming & Memory Management',
+          'Hash Table Implementation & Combinatorics',
+          'Bitwise Logic & Algorithm Optimization',
+          'WebAssembly & Emscripten Compiler',
+          'Full-Stack Integration',
+        ],
+        overview: [
+          'A high-performance Texas Hold\'em equity solver that runs entirely in the browser, utilizing a custom C engine compiled to WebAssembly for exact calculation of hand odds with very low latency.',
+          'The engine employs combinatorial algorithms featuring prime number mapping and perfect hash lookups to evaluate millions of poker hands in milliseconds, surpassing simulation-based approaches in both speed and precision.',
+        ],
+        links: [
+          { label: 'Live Demo', href: 'https://lucatrinca.github.io/Poker-Odds-Calc/', icon: 'open_in_new' },
+          { label: 'GitHub Repo', href: 'https://github.com/LucaTrinca/Poker-Odds-Calc', icon: 'code' },
+        ],
+        gallery: [
+          { caption: 'FIG 01. Calculator Interface', src: 'https://placehold.co/1400x600/e0e7ff/0055FF?text=Calculator+Interface' },
+          { caption: 'FIG 02. Hand Evaluation Output', src: 'https://placehold.co/1400x600/1e3a8a/ffffff?text=Hand+Evaluation' },
+          { caption: 'FIG 03. Algorithm Architecture', src: 'https://placehold.co/1400x600/0055FF/ffffff?text=Algorithm+Architecture' },
+        ],
+        challenges: [
+          {
+            icon: 'calculate',
+            title: 'Combinatorial Explosion',
+            problem: 'Evaluating all possible 5-card hands from a 52-card deck in JavaScript was far too slow for real-time use, with millions of combinations to process.',
+            solution: 'Implemented bitwise operations in C achieving approximately 100x performance improvement over JavaScript alternatives.',
+          },
+          {
+            icon: 'bolt',
+            title: 'Hand Evaluation Latency',
+            problem: 'Linear search approaches for hand ranking were too slow when evaluating the full combinatorial space within the browser.',
+            solution: 'Deployed a prime number mapping system enabling O(1) lookups via pre-computed hash tables rather than linear searches.',
+          },
+          {
+            icon: 'memory',
+            title: 'Browser Integration',
+            problem: 'Bridging a C-compiled WebAssembly module with the JavaScript frontend required careful memory boundary management between the two heaps.',
+            solution: 'Leveraged Emscripten to compile C to WebAssembly while explicitly managing memory allocation between the JavaScript frontend and C heap.',
+          },
+          {
+            icon: 'tune',
+            title: 'Approximation vs. Precision',
+            problem: 'Determining whether to use Monte Carlo simulation or exact combinatorial enumeration required balancing accuracy against runtime performance.',
+            solution: 'Determined exact calculation feasible for pre-flop scenarios (~1.7M combinations) within 100ms, surpassing simulation in both speed and accuracy.',
+          },
+        ],
+        next: { id: 'electric-piano', title: 'Electric Piano' },
+      },
+    };
+
+    // ── Load project from URL param ───────────────────────────────────────────
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+    const project = projects[id] || projects['electric-piano'];
+
+    // Page title
+    document.title = `${project.title} — Luca Trinca`;
+
+    // Hero
+    const heroImg = document.getElementById('hero-img');
+    heroImg.src = project.heroImage;
+    heroImg.alt = `Project Hero — ${project.title}`;
+    document.getElementById('hero-title').textContent = project.title;
+    document.getElementById('hero-category').textContent = project.category;
+
+    // Skills
+    const skillsList = document.getElementById('skills-list');
+    project.skills.forEach(skill => {
+      const li = document.createElement('li');
+      li.className = 'flex items-center gap-4';
+      li.innerHTML = `
+        <span class="flex-shrink-0 w-2 h-2 rounded-full bg-primary"></span>
+        <span class="font-body text-lg text-on-surface-variant">${skill}</span>
+      `;
+      skillsList.appendChild(li);
+    });
+
+    // Overview
+    const overviewEl = document.getElementById('overview-text');
+    project.overview.forEach((para, i) => {
+      const p = document.createElement('p');
+      p.className = i === 0
+        ? 'font-body text-xl leading-relaxed text-on-surface-variant'
+        : 'font-body text-lg leading-relaxed text-on-surface-variant/80';
+      p.textContent = para;
+      overviewEl.appendChild(p);
+    });
+
+    // Project links (live demo, GitHub, etc.)
+    const linksEl = document.getElementById('project-links');
+    project.links.forEach(link => {
+      const a = document.createElement('a');
+      a.href = link.href;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.className = 'inline-flex items-center gap-2 bg-primary text-on-primary px-6 py-3 rounded-lg font-label text-sm font-bold tracking-widest uppercase hover:brightness-110 transition-all';
+      a.innerHTML = `<span class="material-symbols-outlined text-sm">${link.icon}</span>${link.label}`;
+      linksEl.appendChild(a);
+    });
+
+    // Gallery
+    const galleryImages = project.gallery;
     let activeIndex = 0;
 
-    // ── Render thumbnails ─────────────────────────────────────────────────────
+    const mainImg = document.getElementById('gallery-main');
+    const captionEl = document.getElementById('gallery-caption');
+    mainImg.src = galleryImages[0].src;
+    mainImg.alt = galleryImages[0].caption;
+    captionEl.textContent = galleryImages[0].caption;
+
     const thumbsContainer = document.getElementById('gallery-thumbs');
     galleryImages.forEach((img, i) => {
       const btn = document.createElement('button');
@@ -384,53 +536,63 @@
           : 'border-transparent opacity-70 hover:opacity-100 hover:border-primary/50'
       ].join(' ');
       btn.setAttribute('aria-label', img.caption);
-      btn.innerHTML = `<img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover" onerror="this.src='${img.fallback}'"/>`;
+      btn.innerHTML = `<img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover"/>`;
       btn.addEventListener('click', () => setActive(i));
       thumbsContainer.appendChild(btn);
     });
 
-    // ── Switch active gallery image ───────────────────────────────────────────
     function setActive(index) {
       activeIndex = index;
-      const main = document.getElementById('gallery-main');
-      const caption = document.getElementById('gallery-caption');
       const data = galleryImages[index];
-
-      main.style.opacity = '0';
+      mainImg.style.opacity = '0';
       setTimeout(() => {
-        main.src = data.src;
-        main.onerror = () => { main.src = data.fallback; };
-        main.alt = data.caption;
-        caption.textContent = data.caption;
-        main.style.opacity = '1';
+        mainImg.src = data.src;
+        mainImg.alt = data.caption;
+        captionEl.textContent = data.caption;
+        mainImg.style.opacity = '1';
       }, 150);
-
-      // Update thumbnail states
       thumbsContainer.querySelectorAll('button').forEach((btn, i) => {
-        if (i === index) {
-          btn.className = 'relative aspect-square overflow-hidden rounded-xl border-2 border-primary ring-4 ring-primary/20 scale-[0.98] transition-all duration-200';
-        } else {
-          btn.className = 'relative aspect-square overflow-hidden rounded-xl border-2 border-transparent opacity-70 hover:opacity-100 hover:border-primary/50 transition-all duration-200';
-        }
+        btn.className = i === index
+          ? 'relative aspect-square overflow-hidden rounded-xl border-2 border-primary ring-4 ring-primary/20 scale-[0.98] transition-all duration-200'
+          : 'relative aspect-square overflow-hidden rounded-xl border-2 border-transparent opacity-70 hover:opacity-100 hover:border-primary/50 transition-all duration-200';
       });
     }
+
+    // Challenges
+    const challengesGrid = document.getElementById('challenges-grid');
+    project.challenges.forEach(c => {
+      const div = document.createElement('div');
+      div.className = 'bg-surface-container-high p-10 rounded-2xl border border-gray-200/50';
+      div.innerHTML = `
+        <div class="flex items-center gap-3 mb-6">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings:'wght' 700;">${c.icon}</span>
+          <h4 class="font-headline font-extrabold text-on-surface text-lg uppercase tracking-tight">${c.title}</h4>
+        </div>
+        <p class="font-body text-on-surface-variant mb-8 leading-relaxed">${c.problem}</p>
+        <div class="bg-primary/5 p-6 rounded-xl border-l-4 border-primary">
+          <span class="font-label text-primary text-[0.625rem] font-extrabold uppercase tracking-widest block mb-2">The Solution</span>
+          <p class="font-body text-on-surface font-semibold italic">${c.solution}</p>
+        </div>
+      `;
+      challengesGrid.appendChild(div);
+    });
+
+    // Next project
+    document.getElementById('next-title').textContent = project.next.title;
+    document.getElementById('next-link').href = `project.html?id=${project.next.id}`;
 
     // ── Lightbox ─────────────────────────────────────────────────────────────
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
     document.getElementById('fullscreen-btn').addEventListener('click', () => {
-      const data = galleryImages[activeIndex];
-      lightboxImg.src = data.src;
-      lightboxImg.onerror = () => { lightboxImg.src = data.fallback; };
+      lightboxImg.src = galleryImages[activeIndex].src;
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
-
     document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
     function closeLightbox() {
       lightbox.classList.remove('active');
       document.body.style.overflow = '';
