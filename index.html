@@ -166,7 +166,7 @@
     <section class="bg-surface-container border-y border-gray-200/50">
       <div class="max-w-7xl mx-auto px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div>
-          <div class="font-headline font-extrabold text-4xl text-primary mb-1">4</div>
+          <div class="font-headline font-extrabold text-4xl text-primary mb-1">5</div>
           <div class="font-label text-[0.75rem] font-bold tracking-widest uppercase text-on-surface-variant">Projects Completed</div>
         </div>
         <div>
@@ -195,6 +195,30 @@
           <a href="#projects" class="hidden md:block font-label font-extrabold text-sm text-primary underline underline-offset-8 decoration-2 hover:text-primary-dim transition-colors">EXPLORE ARCHIVE</a>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <!-- Featured Project -->
+          <a href="project.html?id=mars-robot" class="group relative aspect-[16/10] md:aspect-[21/9] md:col-span-2 overflow-hidden rounded-xl bg-surface-variant cursor-pointer ghost-shadow transition-all duration-500 shadow-sm border border-gray-100">
+            <img
+              alt="Autonomous Mars Robot"
+              class="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
+              src="images/mars-robot-final.jpg"
+              onerror="this.onerror=null;this.src='https://placehold.co/1600x686/e0e7ff/0055FF?text=Autonomous+Mars+Robot'"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:from-primary/90 transition-all duration-500"></div>
+            <div class="absolute inset-0 flex flex-col justify-end p-10">
+              <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <span class="text-white/70 font-label text-[0.625rem] font-bold tracking-[0.3em] uppercase mb-2 block">ROBOTICS / EMBEDDED SYSTEMS</span>
+                <h4 class="text-white font-headline font-bold text-3xl md:text-4xl tracking-tight mb-3">Autonomous Mars Robot</h4>
+                <p class="text-white/70 font-body text-sm mb-6 hidden group-hover:block">Fully autonomous ENPH 253 competition robot — FSM firmware, PD-controlled drivetrain, custom PCBs, and on-device vision.</p>
+                <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                  <span class="inline-flex items-center gap-2 bg-white text-primary px-5 py-2 rounded-lg font-label text-xs font-bold tracking-widest uppercase">
+                    View Project
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
 
           <!-- Project Card 01 -->
           <a href="project.html?id=electric-piano" class="group relative aspect-[16/10] overflow-hidden rounded-xl bg-surface-variant cursor-pointer ghost-shadow transition-all duration-500 shadow-sm border border-gray-100">

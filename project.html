@@ -265,6 +265,72 @@
   <script>
     // ── Project data ──────────────────────────────────────────────────────────
     const projects = {
+      'mars-robot': {
+        title: 'Autonomous Mars Robot',
+        category: 'Robotics / Embedded Systems',
+        heroImage: 'images/mars-robot-final.jpg',
+        skills: [
+          'Modular C++ Firmware & FSM Architecture',
+          'PD Control Loop Design & Tuning',
+          'Custom PCB Design & Routing',
+          'Analog Signal Conditioning & DSP',
+          'Embedded Machine Learning (Edge Impulse FOMO)',
+          'Mechanism Design & CAD Integration',
+        ],
+        overview: [
+          'A fully autonomous robot built for Engineering Physics Robot Summer (ENPH 253), designed to complete complex multi-stage tasks on a competition course whose layout changed on every run.',
+          'I worked across the full stack of the machine: a compact chassis integrating drivetrain, articulated claw, and electronics; custom PCBs carrying H-bridge motor drivers and analog signal conditioning; and modular C++ firmware structured around a finite state machine that coordinated sensing, motion, and autonomous decision-making.',
+        ],
+        links: [],
+        gallery: [
+          { caption: 'FIG 01. Completed Robot', src: 'images/mars-robot-final.jpg' },
+          { caption: 'FIG 02. Chassis & Drivetrain', src: 'images/mars-robot-chassis.jpg' },
+          { caption: 'FIG 03. Articulated Claw', src: 'images/mars-robot-claw.jpg' },
+          { caption: 'FIG 04. Custom PCB — H-Bridge & Filter', src: 'images/mars-robot-pcb.jpg' },
+          { caption: 'FIG 05. Control Architecture (FSM)', src: 'images/mars-robot-fsm.png' },
+          { caption: 'FIG 06. FOMO Figurine Detection', src: 'images/mars-robot-vision.png' },
+        ],
+        challenges: [
+          {
+            icon: 'route',
+            title: 'A Course That Changed Each Run',
+            problem: 'Because the course layout was different on every run, a fixed scripted routine was unusable — a hardcoded task order would spend the clock chasing objectives that were unreachable or low-value for that particular configuration.',
+            solution: 'Built an expected-value scoring policy that weighs robot position, internal task state, and remaining time, letting the robot re-prioritize its next action each cycle to maximize points on whatever course it was given.',
+          },
+          {
+            icon: 'account_tree',
+            title: 'Reliability Under Autonomy',
+            problem: 'Coordinating sensor input, motor control, and task logic in a single monolithic loop made failures difficult to isolate and left the robot with no clean way to recover mid-run.',
+            solution: 'Architected the control software around a finite state machine in modular C++ firmware, with each state owning its own sensor-motor coordination and explicit exit conditions — making autonomous execution predictable and debuggable.',
+          },
+          {
+            icon: 'straighten',
+            title: 'Sub-Millimeter Positioning',
+            problem: 'Open-loop drive commands overshot their target distances and the two drive motors did not track one another, so translational and rotational error compounded over the course of a run.',
+            solution: 'Tuned multiple PD control loops to coordinate both drive motors and convert commanded distances into precise motion without overshoot, reaching sub-millimeter translational accuracy.',
+          },
+          {
+            icon: 'graphic_eq',
+            title: 'Metal Detection in Noise',
+            problem: 'The raw metal detector signal was buried in electrical noise from the motors and surrounding electronics, making naive amplitude thresholding unreliable.',
+            solution: 'Designed an active bandpass filter PCB to isolate the target frequency band, then implemented the Goertzel algorithm in firmware to measure signal amplitude at that exact frequency — giving a clean, dependable detection signal.',
+          },
+          {
+            icon: 'visibility',
+            title: 'On-Device Figurine Detection',
+            problem: 'Identifying figurines required computer vision, but the ESP microcontroller had nowhere near the memory or compute budget for a conventional object-detection model.',
+            solution: 'Trained and deployed an Edge Impulse FOMO object-detection model sized for the resource-constrained ESP, achieving over 95% reliability in figurine identification and feeding perception directly into the decision loop.',
+          },
+          {
+            icon: 'precision_manufacturing',
+            title: 'Reliable Target Retrieval',
+            problem: 'The claw had to close securely on targets despite run-to-run variation in approach angle and position, and a poorly proportioned linkage would either miss or fail to hold.',
+            solution: 'Designed an articulated claw mechanism, analyzed the linkage kinematics by hand to size the geometry, and validated the resulting design experimentally before integrating it into the chassis.',
+          },
+        ],
+        next: { id: 'electric-piano', title: 'Electric Piano' },
+      },
+
       'electric-piano': {
         title: 'Electric Piano',
         category: 'Arduino / Fabrication',
@@ -459,7 +525,7 @@
             solution: 'Determined exact calculation feasible for pre-flop scenarios (~1.7M combinations) within 100ms, surpassing simulation in both speed and accuracy.',
           },
         ],
-        next: { id: 'electric-piano', title: 'Electric Piano' },
+        next: { id: 'mars-robot', title: 'Autonomous Mars Robot' },
       },
     };
 
@@ -471,8 +537,16 @@
     // Page title
     document.title = `${project.title} — Luca Trinca`;
 
+    // Placeholder shown when an image file isn't present yet
+    const placeholder = (text, w = 1200, h = 750) =>
+      `https://placehold.co/${w}x${h}/e0e7ff/0055FF?text=${encodeURIComponent(text)}`;
+
     // Hero
     const heroImg = document.getElementById('hero-img');
+    heroImg.onerror = () => {
+      heroImg.onerror = null;
+      heroImg.src = placeholder(project.title, 1600, 900);
+    };
     heroImg.src = project.heroImage;
     heroImg.alt = `Project Hero — ${project.title}`;
     document.getElementById('hero-title').textContent = project.title;
@@ -519,6 +593,10 @@
 
     const mainImg = document.getElementById('gallery-main');
     const captionEl = document.getElementById('gallery-caption');
+    mainImg.addEventListener('error', () => {
+      const fallback = placeholder(galleryImages[activeIndex].caption);
+      if (mainImg.src !== fallback) mainImg.src = fallback;
+    });
     mainImg.src = galleryImages[0].src;
     mainImg.alt = galleryImages[0].caption;
     captionEl.textContent = galleryImages[0].caption;
@@ -533,7 +611,7 @@
           : 'border-transparent opacity-70 hover:opacity-100 hover:border-primary/50'
       ].join(' ');
       btn.setAttribute('aria-label', img.caption);
-      btn.innerHTML = `<img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover"/>`;
+      btn.innerHTML = `<img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='${placeholder(img.caption, 400, 400)}'"/>`;
       btn.addEventListener('click', () => setActive(i));
       thumbsContainer.appendChild(btn);
     });
@@ -581,6 +659,11 @@
     // ── Lightbox ─────────────────────────────────────────────────────────────
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
+
+    lightboxImg.addEventListener('error', () => {
+      const fallback = placeholder(galleryImages[activeIndex].caption, 1600, 1000);
+      if (lightboxImg.src !== fallback) lightboxImg.src = fallback;
+    });
 
     document.getElementById('fullscreen-btn').addEventListener('click', () => {
       lightboxImg.src = galleryImages[activeIndex].src;
