@@ -130,6 +130,8 @@
         src=""
       />
       <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+      <!-- Top scrim keeps the back-link legible over light hero images -->
+      <div class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/45 to-transparent pointer-events-none"></div>
       <a href="index.html" class="absolute top-8 left-8 md:left-24 inline-flex items-center gap-2 text-white/80 hover:text-white font-label text-xs font-bold tracking-widest uppercase transition-colors group">
         <span class="material-symbols-outlined text-sm transition-transform group-hover:-translate-x-1">arrow_back</span>
         All Projects
@@ -265,10 +267,69 @@
   <script>
     // ── Project data ──────────────────────────────────────────────────────────
     const projects = {
+      'thunderbots': {
+        title: 'UBC ThunderBots',
+        category: 'Mechanical Design / RoboCup',
+        heroImage: 'images/thunderbots-robot.jpg',
+        skills: [
+          'SolidWorks CAD & Rapid Prototyping',
+          'PID Tuning & Drivetrain Kinematics',
+          'Experimental System Identification',
+          'Motor Characterization & Test Rig Design',
+          'Mechanism Design (Dribbler, Kicker)',
+          'Subsystem Integration',
+        ],
+        overview: [
+          'UBC ThunderBots is a student design team competing in RoboCup, the international autonomous robot soccer competition. I joined the mechanical subteam in September 2025, designing and prototyping mechanical systems across the robot\'s dribbler, kicker, and drivetrain.',
+          'The work spans mechanical design and hands-on characterization: deriving drivetrain kinematics by hand, tuning PID loops for omnidirectional motion, experimentally modeling the solenoid kicker, and building a custom dynamometer to measure motor performance before integration. The team placed 9th at the 2026 International RoboCup in Incheon.',
+        ],
+        links: [],
+        gallery: [
+          { caption: 'FIG 01. Competition Robot', src: 'images/thunderbots-robot.jpg' },
+          { caption: 'FIG 02. Omnidirectional Drivetrain', src: 'images/thunderbots-drivetrain.jpg' },
+          { caption: 'FIG 03. Active Dribbler', src: 'images/thunderbots-dribbler.jpg' },
+          { caption: 'FIG 04. Prony Brake Dynamometer', src: 'images/thunderbots-dyno.jpg' },
+          { caption: 'FIG 05. Kicker Calibration', src: 'images/thunderbots-kicker.jpg' },
+        ],
+        challenges: [
+          {
+            icon: 'open_with',
+            title: 'Omnidirectional Motion',
+            problem: 'The team\'s new omnidirectional drivetrain moved jerkily under autonomous navigation. Commanded body velocities had to be resolved into individual wheel speeds, and the untuned gains made strafing unstable.',
+            solution: 'Derived the drivetrain motion calculations by hand to map commanded body velocities onto individual wheel speeds, then iteratively retuned the PID gains until strafing was smooth, stable, and fluid.',
+          },
+          {
+            icon: 'sports_soccer',
+            title: 'Repeatable Kicks',
+            problem: 'The solenoid kicker was driven by pulse length, but the relationship between pulse length and ball exit speed was unknown — so firmware could not command a specific kick speed or reliably stay under the competition ceiling.',
+            solution: 'Experimentally modeled kick speed as a function of solenoid pulse length and built a calibration curve from it, letting firmware trigger repeatable kicks at target speeds up to the 8 m/s competition limit.',
+          },
+          {
+            icon: 'engineering',
+            title: 'Measuring Running Torque',
+            problem: 'Datasheet stall-torque figures say nothing about how a motor behaves under real running loads, and no off-the-shelf rig was available to measure it.',
+            solution: 'Designed and 3D-printed a modified Prony brake dynamometer in SolidWorks, using friction brake pads to transfer shaft torque to a scale under controlled slip — enabling running (non-stall) torque and efficiency measurement.',
+          },
+          {
+            icon: 'bolt',
+            title: 'Motor Characterization',
+            problem: 'The robot\'s power and current budget was unknown ahead of integration, with no data on how the three-phase motors drew current as load increased.',
+            solution: 'Integrated current sensing alongside the mechanical braking on the dynamometer to map torque against current draw across operating loads, driving per-motor tuning and setting realistic power expectations for the robot.',
+          },
+          {
+            icon: 'autorenew',
+            title: 'Ball Control at Speed',
+            problem: 'A rigidly mounted dribbler roller could not retain the ball during high-speed autonomous maneuvers — impact energy simply bounced the ball back off the robot.',
+            solution: 'Engineered an active dribbler pairing a rotating roller with a compliant, damped foam mount with rotational freedom to absorb impact, then built test jigs to quantitatively evaluate retention and tune the damping before competition deployment.',
+          },
+        ],
+        next: { id: 'mars-robot', title: 'Autonomous Mars Robot' },
+      },
+
       'mars-robot': {
         title: 'Autonomous Mars Robot',
         category: 'Robotics / Embedded Systems',
-        heroImage: 'images/Photo%20Final.jpeg',
+        heroImage: 'images/Robot%20CAD%20picture%20with%20Labels.png',
         skills: [
           'Modular C++ Firmware & FSM Architecture',
           'PD Control Loop Design & Tuning',
@@ -290,8 +351,10 @@
           { caption: 'FIG 01. Completed Robot', src: 'images/Photo%20Final.jpeg' },
           { caption: 'FIG 02. CAD Assembly — Subsystem Layout', src: 'images/Robot%20CAD%20picture%20with%20Labels.png' },
           { caption: 'FIG 03. Build in Progress', src: 'images/Photo%20semi%20final.jpeg' },
-          { caption: 'FIG 04. Active Bandpass Filter PCB', src: 'images/Filter%20PCB%20photo.jpeg' },
-          { caption: 'FIG 05. H-Bridge Motor Driver PCB', src: 'images/H%20bridge%20photo.jpeg' },
+          // NB: the two PCB photos are named the wrong way round on disk —
+          // "H bridge photo" is the filter board and vice versa.
+          { caption: 'FIG 04. Active Bandpass Filter PCB', src: 'images/H%20bridge%20photo.jpeg' },
+          { caption: 'FIG 05. H-Bridge Motor Driver PCB', src: 'images/Filter%20PCB%20photo.jpeg' },
           { caption: 'FIG 06. Robot Summer Team', src: 'images/Photo%20with%20Robot%20Summer%20Team.jpeg' },
         ],
         challenges: [
@@ -529,7 +592,7 @@
             solution: 'Determined exact calculation feasible for pre-flop scenarios (~1.7M combinations) within 100ms, surpassing simulation in both speed and accuracy.',
           },
         ],
-        next: { id: 'mars-robot', title: 'Autonomous Mars Robot' },
+        next: { id: 'thunderbots', title: 'UBC ThunderBots' },
       },
     };
 
@@ -545,13 +608,28 @@
     const placeholder = (text, w = 1200, h = 750) =>
       `https://placehold.co/${w}x${h}/e0e7ff/0055FF?text=${encodeURIComponent(text)}`;
 
+    // Resized copies live in images/web (display size) and images/thumb.
+    // Originals stay in images/ and are what the lightbox opens.
+    const variant = (src, kind) => src.replace(/^images\//, `images/${kind}/`);
+
+    // Try each source in turn, stepping down to the next on load failure.
+    function loadImage(img, sources) {
+      let i = 0;
+      img.onerror = () => {
+        i += 1;
+        if (i < sources.length) img.src = sources[i];
+        else img.onerror = null;
+      };
+      img.src = sources[0];
+    }
+
     // Hero
     const heroImg = document.getElementById('hero-img');
-    heroImg.onerror = () => {
-      heroImg.onerror = null;
-      heroImg.src = placeholder(project.title, 1600, 900);
-    };
-    heroImg.src = project.heroImage;
+    loadImage(heroImg, [
+      variant(project.heroImage, 'web'),
+      project.heroImage,
+      placeholder(project.title, 1600, 900),
+    ]);
     heroImg.alt = `Project Hero — ${project.title}`;
     document.getElementById('hero-title').textContent = project.title;
     document.getElementById('hero-category').textContent = project.category;
@@ -597,13 +675,15 @@
 
     const mainImg = document.getElementById('gallery-main');
     const captionEl = document.getElementById('gallery-caption');
-    mainImg.addEventListener('error', () => {
-      const fallback = placeholder(galleryImages[activeIndex].caption);
-      if (mainImg.src !== fallback) mainImg.src = fallback;
-    });
-    mainImg.src = galleryImages[0].src;
-    mainImg.alt = galleryImages[0].caption;
-    captionEl.textContent = galleryImages[0].caption;
+
+    function showMain(index) {
+      const data = galleryImages[index];
+      loadImage(mainImg, [variant(data.src, 'web'), data.src, placeholder(data.caption)]);
+      mainImg.alt = data.caption;
+      captionEl.textContent = data.caption;
+    }
+
+    showMain(0);
 
     const thumbsContainer = document.getElementById('gallery-thumbs');
     galleryImages.forEach((img, i) => {
@@ -615,19 +695,22 @@
           : 'border-transparent opacity-70 hover:opacity-100 hover:border-primary/50'
       ].join(' ');
       btn.setAttribute('aria-label', img.caption);
-      btn.innerHTML = `<img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover" onerror="this.onerror=null;this.src='${placeholder(img.caption, 400, 400)}'"/>`;
+      const thumb = document.createElement('img');
+      thumb.className = 'w-full h-full object-cover';
+      thumb.alt = img.caption;
+      thumb.loading = 'lazy';
+      thumb.decoding = 'async';
+      loadImage(thumb, [variant(img.src, 'thumb'), img.src, placeholder(img.caption, 400, 400)]);
+      btn.appendChild(thumb);
       btn.addEventListener('click', () => setActive(i));
       thumbsContainer.appendChild(btn);
     });
 
     function setActive(index) {
       activeIndex = index;
-      const data = galleryImages[index];
       mainImg.style.opacity = '0';
       setTimeout(() => {
-        mainImg.src = data.src;
-        mainImg.alt = data.caption;
-        captionEl.textContent = data.caption;
+        showMain(index);
         mainImg.style.opacity = '1';
       }, 150);
       thumbsContainer.querySelectorAll('button').forEach((btn, i) => {
@@ -664,13 +747,14 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
-    lightboxImg.addEventListener('error', () => {
-      const fallback = placeholder(galleryImages[activeIndex].caption, 1600, 1000);
-      if (lightboxImg.src !== fallback) lightboxImg.src = fallback;
-    });
-
     document.getElementById('fullscreen-btn').addEventListener('click', () => {
-      lightboxImg.src = galleryImages[activeIndex].src;
+      // Fullscreen gets the untouched original, not the resized copy.
+      const data = galleryImages[activeIndex];
+      loadImage(lightboxImg, [
+        data.src,
+        variant(data.src, 'web'),
+        placeholder(data.caption, 1600, 1000),
+      ]);
       lightbox.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
