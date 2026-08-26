@@ -217,7 +217,7 @@
           <div class="w-full lg:w-auto lg:flex-shrink-0 mx-auto lg:mx-0">
             <video
               id="project-video"
-              class="rounded-2xl shadow-2xl shadow-black/10 bg-black w-full max-w-sm mx-auto"
+              class="rounded-2xl shadow-2xl shadow-black/10 bg-black w-full mx-auto"
               controls
               muted
               playsinline
@@ -314,6 +314,7 @@
         ],
         video: {
           title: 'Active Dribbler in Motion',
+          orientation: 'portrait',
           src: 'video/thunderbots-dribbler.mp4',
           poster: 'images/web/Dribbler%20Demo%20Poster.jpg',
           caption: 'The dribbler roller spinning up and drawing the ball against the robot. The compliant, damped foam mount lets the roller absorb the ball\'s impact instead of rebounding it, which is what keeps the ball under control during fast autonomous maneuvers.',
@@ -384,6 +385,13 @@
           { caption: 'FIG 05. H-Bridge Motor Driver PCB', src: 'images/Filter%20PCB%20photo.jpeg' },
           { caption: 'FIG 06. Robot Summer Team', src: 'images/Photo%20with%20Robot%20Summer%20Team.jpeg' },
         ],
+        video: {
+          title: 'Competition Run',
+          orientation: 'landscape',
+          src: 'video/mars-robot-run.mp4',
+          poster: 'images/web/Robot%20Summer%20Run%20Poster.jpg',
+          caption: 'A full run on the ENPH 253 course. Because the layout changed between runs, the robot could not follow a fixed script: it chose its next task on the fly from its position, the objectives it had already collected, and the time left on the clock.',
+        },
         challenges: [
           {
             icon: 'route',
@@ -753,6 +761,8 @@
       const section = document.getElementById('video-section');
       const vid = document.getElementById('project-video');
       vid.src = project.video.src;
+      // Portrait clips stay narrow; landscape ones get the wider column.
+      vid.classList.add(project.video.orientation === 'landscape' ? 'max-w-2xl' : 'max-w-sm');
       if (project.video.poster) vid.poster = project.video.poster;
       document.getElementById('video-title').textContent = project.video.title;
       document.getElementById('video-caption').textContent = project.video.caption;
