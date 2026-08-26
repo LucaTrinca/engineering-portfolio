@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Project — Luca Trinca</title>
+  <title>Project | Luca Trinca</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
@@ -208,6 +208,28 @@
       </div>
     </section>
 
+    <!-- Section 3b: Video (only rendered when the project defines one) -->
+    <section id="video-section" class="bg-surface-container py-24 hidden">
+      <div class="max-w-7xl mx-auto px-8">
+        <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4">Demonstration</h2>
+        <h3 id="video-title" class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-12"></h3>
+        <div class="flex flex-col lg:flex-row gap-10 items-start">
+          <div class="w-full lg:w-auto lg:flex-shrink-0 mx-auto lg:mx-0">
+            <video
+              id="project-video"
+              class="rounded-2xl shadow-2xl shadow-black/10 bg-black w-full max-w-sm mx-auto"
+              controls
+              muted
+              playsinline
+              loop
+              preload="none"
+            ></video>
+          </div>
+          <p id="video-caption" class="font-body text-lg leading-relaxed text-on-surface-variant lg:pt-4 max-w-xl"></p>
+        </div>
+      </div>
+    </section>
+
     <!-- Section 4: Challenges & Solutions -->
     <section class="max-w-7xl mx-auto px-8 py-24">
       <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-16">The Engineering Journey</h2>
@@ -287,9 +309,15 @@
         gallery: [
           { caption: 'FIG 01. Competition Robot', src: 'images/Full%20Robot%20Thunderbots.jpg' },
           { caption: 'FIG 02. Full CAD Assembly', src: 'images/FULL%20CAD%20Of%20Thunderbots%20robot.png' },
-          { caption: 'FIG 03. Active Dribbler — CAD', src: 'images/CAD%20Dribbler%20Thunderbos.png' },
-          { caption: 'FIG 04. Prony Brake Dynamometer — CAD', src: 'images/Dynamometer%20Thunderbots%20CAD.png' },
+          { caption: 'FIG 03. Active Dribbler (CAD)', src: 'images/CAD%20Dribbler%20Thunderbos.png' },
+          { caption: 'FIG 04. Prony Brake Dynamometer (CAD)', src: 'images/Dynamometer%20Thunderbots%20CAD.png' },
         ],
+        video: {
+          title: 'Active Dribbler in Motion',
+          src: 'video/thunderbots-dribbler.mp4',
+          poster: 'images/web/Dribbler%20Demo%20Poster.jpg',
+          caption: 'The dribbler roller spinning up and drawing the ball against the robot. The compliant, damped foam mount lets the roller absorb the ball\'s impact instead of rebounding it, which is what keeps the ball under control during fast autonomous maneuvers.',
+        },
         challenges: [
           {
             icon: 'open_with',
@@ -300,14 +328,14 @@
           {
             icon: 'sports_soccer',
             title: 'Repeatable Kicks',
-            problem: 'The solenoid kicker was driven by pulse length, but the relationship between pulse length and ball exit speed was unknown — so firmware could not command a specific kick speed or reliably stay under the competition ceiling.',
+            problem: 'The solenoid kicker was driven by pulse length, but the relationship between pulse length and ball exit speed was unknown, so firmware could not command a specific kick speed or reliably stay under the competition ceiling.',
             solution: 'Experimentally modeled kick speed as a function of solenoid pulse length and built a calibration curve from it, letting firmware trigger repeatable kicks at target speeds up to the 8 m/s competition limit.',
           },
           {
             icon: 'engineering',
             title: 'Measuring Running Torque',
             problem: 'Datasheet stall-torque figures say nothing about how a motor behaves under real running loads, and no off-the-shelf rig was available to measure it.',
-            solution: 'Designed and 3D-printed a modified Prony brake dynamometer in SolidWorks, using friction brake pads to transfer shaft torque to a scale under controlled slip — enabling running (non-stall) torque and efficiency measurement.',
+            solution: 'Designed and 3D-printed a modified Prony brake dynamometer in SolidWorks, using friction brake pads to transfer shaft torque to a scale under controlled slip, enabling running (non-stall) torque and efficiency measurement.',
           },
           {
             icon: 'bolt',
@@ -318,7 +346,7 @@
           {
             icon: 'autorenew',
             title: 'Ball Control at Speed',
-            problem: 'A rigidly mounted dribbler roller could not retain the ball during high-speed autonomous maneuvers — impact energy simply bounced the ball back off the robot.',
+            problem: 'A rigidly mounted dribbler roller could not retain the ball during high-speed autonomous maneuvers. Impact energy simply bounced the ball back off the robot.',
             solution: 'Engineered an active dribbler pairing a rotating roller with a compliant, damped foam mount with rotational freedom to absorb impact, then built test jigs to quantitatively evaluate retention and tune the damping before competition deployment.',
           },
         ],
@@ -348,9 +376,9 @@
         ],
         gallery: [
           { caption: 'FIG 01. Completed Robot', src: 'images/Photo%20Final.jpeg' },
-          { caption: 'FIG 02. CAD Assembly — Subsystem Layout', src: 'images/Robot%20CAD%20picture%20with%20Labels.png' },
+          { caption: 'FIG 02. CAD Assembly (Subsystem Layout)', src: 'images/Robot%20CAD%20picture%20with%20Labels.png' },
           { caption: 'FIG 03. Build in Progress', src: 'images/Photo%20semi%20final.jpeg' },
-          // NB: the two PCB photos are named the wrong way round on disk —
+          // NB: the two PCB photos are named the wrong way round on disk:
           // "H bridge photo" is the filter board and vice versa.
           { caption: 'FIG 04. Active Bandpass Filter PCB', src: 'images/H%20bridge%20photo.jpeg' },
           { caption: 'FIG 05. H-Bridge Motor Driver PCB', src: 'images/Filter%20PCB%20photo.jpeg' },
@@ -360,14 +388,14 @@
           {
             icon: 'route',
             title: 'A Course That Changed Each Run',
-            problem: 'Because the course layout was different on every run, a fixed scripted routine was unusable — a hardcoded task order would spend the clock chasing objectives that were unreachable or low-value for that particular configuration.',
+            problem: 'Because the course layout was different on every run, a fixed scripted routine was unusable. A hardcoded task order would spend the clock chasing objectives that were unreachable or low-value for that particular configuration.',
             solution: 'Built an expected-value scoring policy that weighs robot position, internal task state, and remaining time, letting the robot re-prioritize its next action each cycle to maximize points on whatever course it was given.',
           },
           {
             icon: 'account_tree',
             title: 'Reliability Under Autonomy',
             problem: 'Coordinating sensor input, motor control, and task logic in a single monolithic loop made failures difficult to isolate and left the robot with no clean way to recover mid-run.',
-            solution: 'Architected the control software around a finite state machine in modular C++ firmware, with each state owning its own sensor-motor coordination and explicit exit conditions — making autonomous execution predictable and debuggable.',
+            solution: 'Architected the control software around a finite state machine in modular C++ firmware, with each state owning its own sensor-motor coordination and explicit exit conditions, making autonomous execution predictable and debuggable.',
           },
           {
             icon: 'straighten',
@@ -379,7 +407,7 @@
             icon: 'graphic_eq',
             title: 'Metal Detection in Noise',
             problem: 'The raw metal detector signal was buried in electrical noise from the motors and surrounding electronics, making naive amplitude thresholding unreliable.',
-            solution: 'Designed an active bandpass filter PCB to isolate the target frequency band, then implemented the Goertzel algorithm in firmware to measure signal amplitude at that exact frequency — giving a clean, dependable detection signal.',
+            solution: 'Designed an active bandpass filter PCB to isolate the target frequency band, then implemented the Goertzel algorithm in firmware to measure signal amplitude at that exact frequency, giving a clean, dependable detection signal.',
           },
           {
             icon: 'visibility',
@@ -416,8 +444,8 @@
         gallery: [
           { caption: 'FIG 01. Final Product', src: 'images/Portfolio%20-%20Final.jpg' },
           { caption: 'FIG 02. In Progress', src: 'images/Portfolio%20-%20in%20progress.jpg' },
-          { caption: 'FIG 03. CAD Model – White Keys', src: 'images/Portfolio%20-%20White%20Keys.png' },
-          { caption: 'FIG 04. Key Mechanism – Black Keys', src: 'images/Portfolio%20-%20Black%20Keys.png' },
+          { caption: 'FIG 03. CAD Model (White Keys)', src: 'images/Portfolio%20-%20White%20Keys.png' },
+          { caption: 'FIG 04. Key Mechanism (Black Keys)', src: 'images/Portfolio%20-%20Black%20Keys.png' },
           { caption: 'FIG 05. Circuit Design (Arduino)', src: 'images/Portfolio%20-%20Arduino.png' },
         ],
         challenges: [
@@ -484,7 +512,7 @@
             solution: 'Refined CAD models with appropriate tolerance gaps to ensure smooth motion and real-world manufacturability around joints and pin holes.',
           },
           {
-            icon: 'grip_lamp',
+            icon: 'pinch',
             title: 'Grip Strength',
             problem: 'Smooth finger surfaces could not maintain grip on objects heavier than approximately 200g, causing items to slip.',
             solution: 'Applied higher-friction materials to finger contact surfaces to improve grip reliability across a wider range of object weights.',
@@ -601,7 +629,7 @@
     const project = projects[id] || projects['electric-piano'];
 
     // Page title
-    document.title = `${project.title} — Luca Trinca`;
+    document.title = `${project.title} | Luca Trinca`;
 
     // Placeholder shown when an image file isn't present yet
     const placeholder = (text, w = 1200, h = 750) =>
@@ -629,7 +657,7 @@
       project.heroImage,
       placeholder(project.title, 1600, 900),
     ]);
-    heroImg.alt = `Project Hero — ${project.title}`;
+    heroImg.alt = `Project Hero: ${project.title}`;
     document.getElementById('hero-title').textContent = project.title;
     document.getElementById('hero-category').textContent = project.category;
 
@@ -717,6 +745,18 @@
           ? 'relative aspect-square overflow-hidden rounded-xl border-2 border-primary ring-4 ring-primary/20 scale-[0.98] transition-all duration-200'
           : 'relative aspect-square overflow-hidden rounded-xl border-2 border-transparent opacity-70 hover:opacity-100 hover:border-primary/50 transition-all duration-200';
       });
+    }
+
+    // Video (optional). Audio is stripped from the file itself, and preload is
+    // off so the clip only downloads once the visitor presses play.
+    if (project.video) {
+      const section = document.getElementById('video-section');
+      const vid = document.getElementById('project-video');
+      vid.src = project.video.src;
+      if (project.video.poster) vid.poster = project.video.poster;
+      document.getElementById('video-title').textContent = project.video.title;
+      document.getElementById('video-caption').textContent = project.video.caption;
+      section.classList.remove('hidden');
     }
 
     // Challenges
