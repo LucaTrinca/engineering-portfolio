@@ -208,6 +208,18 @@
       </div>
     </section>
 
+    <!-- Section 3c: Case study (only rendered when the project defines one) -->
+    <section id="story-section" class="max-w-7xl mx-auto px-8 py-24 border-b border-gray-200/50 hidden">
+      <div class="max-w-3xl mb-20">
+        <h2 id="story-eyebrow" class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4"></h2>
+        <h3 id="story-title" class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-8 leading-tight"></h3>
+        <p id="story-intro" class="font-body text-xl leading-relaxed text-on-surface-variant"></p>
+      </div>
+      <div id="story-steps" class="space-y-24">
+        <!-- injected by JS -->
+      </div>
+    </section>
+
     <!-- Section 3b: Video (only rendered when the project defines one) -->
     <section id="video-section" class="bg-surface-container py-24 hidden">
       <div class="max-w-7xl mx-auto px-8">
@@ -305,13 +317,83 @@
           'UBC ThunderBots is a student design team competing in RoboCup, the international autonomous robot soccer competition. I joined the mechanical subteam in September 2025, designing and prototyping mechanical systems across the robot\'s dribbler, kicker, and drivetrain.',
           'The work spans mechanical design and hands-on characterization: deriving drivetrain kinematics by hand, tuning PID loops for omnidirectional motion, experimentally modeling the solenoid kicker, and building a custom dynamometer to measure motor performance before integration. The team placed 9th at the 2026 International RoboCup in Incheon.',
         ],
-        links: [],
+        links: [
+          { label: 'Drivetrain Data Dashboard', href: 'https://lucatrinca.github.io/drivetrain-analysis/', icon: 'monitoring' },
+        ],
         gallery: [
           { caption: 'FIG 01. Competition Robot', src: 'images/Full%20Robot%20Thunderbots.jpg' },
           { caption: 'FIG 02. Full CAD Assembly', src: 'images/FULL%20CAD%20Of%20Thunderbots%20robot.png' },
-          { caption: 'FIG 03. Active Dribbler (CAD)', src: 'images/CAD%20Dribbler%20Thunderbos.png' },
-          { caption: 'FIG 04. Prony Brake Dynamometer (CAD)', src: 'images/Dynamometer%20Thunderbots%20CAD.png' },
+          { caption: 'FIG 03. Redesigned Omni Wheel (Exploded CAD)', src: 'images/Drivetrain%20Wheel%20Exploded%20View.png' },
+          { caption: 'FIG 04. Active Dribbler (CAD)', src: 'images/CAD%20Dribbler%20Thunderbos.png' },
         ],
+        // Case study: told as numbered steps, each with its own figures.
+        story: {
+          eyebrow: 'Case Study',
+          title: 'Improving the Drivetrain',
+          intro: 'In open-loop testing the robot could not hold a straight line. Commanded in one direction, it curved off by tens of degrees. I worked the problem from two directions: where the wheels sit on the chassis, and the wheels themselves.',
+          steps: [
+            {
+              title: 'Measuring the Drift',
+              body: [
+                'I commanded the robot in six directions with no feedback correction and recorded where it actually went. With the original wheels at a 35°/40° front/back layout, the trajectories peeled away from the commanded heading.',
+                'Driving straight forward averaged 41.6° of heading error, and sideways commands were off by 50 to 70°. Any controller built on top would spend its effort fighting the hardware.',
+              ],
+              figures: [
+                { src: 'images/Drivetrain%20Old%20Wheel%20Trajectories.png', caption: 'Original wheels, 35°/40° layout. Thin lines are individual trials, bold lines the average, dashed lines the commanded heading.' },
+              ],
+            },
+            {
+              title: 'Optimizing the Wheel Angles',
+              body: [
+                'Each wheel\'s angle from the robot\'s forward axis sets how its motor force splits between forward and sideways motion. I calculated the maximum acceleration in every direction for seven front/back layouts to map out the trade-off.',
+                'Steeper front wheels widen the front gap and raise forward acceleration (5.55 m/s² at 25°/40°) but starve sideways motion (2.90 m/s²). A symmetric 45°/45° layout is balanced at 4.86 m/s² but narrows the front gap to 90°. The 35°/40° layout held 5.38 m/s² forward and 3.94 m/s² sideways with a 110° gap.',
+                'I then put five layouts on the robot. Every one of them still drifted badly, which pointed to the wheels themselves as the root cause.',
+              ],
+              figures: [
+                { src: 'images/Drivetrain%20Acceleration%20Profiles.png', caption: 'Maximum acceleration by direction for each front/back angle layout. The black dot marks the weakest direction.' },
+              ],
+            },
+            {
+              title: 'Redesigning the Wheel',
+              body: [
+                'With the layout settled, I redesigned the omni wheel in CAD: a ring of rollers captured between two slotted hub plates, mounted to the motor through a dedicated hub and motor plate.',
+                'The key change was a ring that the subwheels mount onto. It preloads their inner shafts, taking out the unwanted slop in the rollers.',
+              ],
+              figures: [
+                { src: 'images/Drivetrain%20Wheel%20Exploded%20View.png', caption: 'Exploded view of the redesigned omni wheel.' },
+              ],
+            },
+            {
+              title: 'Results',
+              body: [
+                'On the same 35°/40° layout, the redesigned wheels brought forward heading error from 41.6° down to 4.3°, and forward runs now ended 0.11 m off target instead of 0.36 m. A follow-up X-ring version of the wheel tightened it further, to 2.6° forward and 10.4° sideways.',
+              ],
+              stats: [
+                { before: '41.6°', after: '4.3°', label: 'Forward heading error' },
+                { before: '72.1°', after: '10.4°', label: 'Sideways heading error' },
+                { before: '0.36 m', after: '0.11 m', label: 'Forward position error' },
+              ],
+              figures: [
+                { src: 'images/Drivetrain%20Forward%20Drift%20Comparison.png', caption: 'Driving forward: original wheels (left) vs. redesigned wheels (right).' },
+                { src: 'images/Drivetrain%20New%20Wheel%20Trajectories.png', caption: 'Redesigned wheels in all six directions. Compare with the original wheels above.' },
+                { src: 'images/Drivetrain%20Heading%20Error%20Matrix.png', caption: 'Average heading error for every layout and wheel version tested. Darker cells mean more drift.', wide: true },
+              ],
+            },
+            {
+              title: 'On the Field',
+              body: [
+                'The payoff on the field: commanded straight down a line, the robot now tracks it instead of curving away, whether it drives facing forward or turned 45° to its direction of travel. That gives the motion controller a predictable base to build on.',
+                'Every trial, layout, and direction is in the interactive drivetrain analysis dashboard.',
+              ],
+              videos: [
+                { src: 'video/drivetrain-straight-landscape.mp4', poster: 'images/web/Drivetrain%20Straight%20Landscape%20Poster.jpg', orientation: 'landscape', caption: 'Driving straight along a field line with the robot turned 45° to its direction of travel.' },
+                { src: 'video/drivetrain-straight-portrait.mp4', poster: 'images/web/Drivetrain%20Straight%20Portrait%20Poster.jpg', orientation: 'portrait', caption: 'Driving straight along a field line at 0°, facing its direction of travel.' },
+              ],
+              figures: [],
+            },
+          ],
+          link: { label: 'Explore the Full Dataset', href: 'https://lucatrinca.github.io/drivetrain-analysis/', icon: 'monitoring' },
+        },
         video: {
           title: 'Active Dribbler in Motion',
           orientation: 'portrait',
@@ -385,13 +467,73 @@
           { caption: 'FIG 04. Active Bandpass Filter PCB', src: 'images/H%20bridge%20photo.jpeg' },
           { caption: 'FIG 05. Power Board', src: 'images/Filter%20PCB%20photo.jpeg' },
           { caption: 'FIG 06. Robot Summer Team', src: 'images/Photo%20with%20Robot%20Summer%20Team.jpeg' },
+          { caption: 'FIG 07. Assembled Robot (Photo: Ben Rutherford-Braun)', src: 'images/Mars%20Robot%20Assembled.jpg' },
         ],
-        video: {
-          title: 'Competition Run',
-          orientation: 'landscape',
-          src: 'video/mars-robot-run.mp4',
-          poster: 'images/web/Robot%20Summer%20Run%20Poster.jpg',
-          caption: 'A full run on the ENPH 253 course. Because the layout changed between runs, the robot could not follow a fixed script: it chose its next task on the fly from its position, the objectives it had already collected, and the time left on the clock.',
+        // The competition run video lives in the final story step instead of
+        // the standalone video section.
+        story: {
+          eyebrow: 'Case Study',
+          title: 'A Simple Machine with a Smart Strategy',
+          intro: 'Most robots in a competition like this lose points to mechanical problems, not code: jammed mechanisms, loose linkages, parts that need fixing between runs. Our team made a deliberate bet. We kept the mechanical design as clean and simple as the task allowed, so the robot simply worked, and we could put our time into sensing, software, and strategy.',
+          steps: [
+            {
+              title: 'The Task',
+              body: [
+                'The course was a simulated Mars surface. Starting from the lowland, the robot had to work its way through clusters of boulders, tell real metallic samples apart from decoys and collect them, and find the Teletubby figurines hidden among the rocks.',
+                'It then had to climb the 6" rise and follow a line, guided by an IR beacon, to the solar panels. All of it ran fully autonomously, with no human input once the run started.',
+              ],
+              figures: [
+                { src: 'images/Mars%20Course%20Map.png', caption: 'The competition surface: boulders, Teletubbies, the IR beacon, and the solar panels on the raised section.' },
+              ],
+            },
+            {
+              title: 'Keeping the Mechanics Simple',
+              body: [
+                'Our rule was that a mechanism only went on the robot if it was essential to scoring. Every extra moving part is another thing that can fail mid-run.',
+                'The result was a two-wheel differential drive under stacked laser-cut decks, which kept the electronics accessible and every part quick to replace. The camera rides on a fixed overhead boom looking down at the ground ahead. A single claw carries the metal-detector coil, so the same motion that checks a rock also picks it up, and collected samples drop into a central bin.',
+                'With so few mechanisms, there was very little to go wrong, and we spent the build season improving the robot instead of repairing it.',
+              ],
+              figures: [
+                { src: 'images/Mars%20Robot%20CAD%20Render.png', caption: 'CAD of the full robot: drive base, stacked electronics decks, camera boom, and claw with the metal-detector coil. (Image: Ben Rutherford-Braun)' },
+                { src: 'images/Mars%20Robot%20Assembled.jpg', caption: 'The assembled robot. (Photo: Ben Rutherford-Braun)' },
+              ],
+            },
+            {
+              title: 'Letting Software Do the Work',
+              body: [
+                'With simple hardware, the intelligence lived in firmware. A finite state machine took the robot from one rock cluster to the next: an ultrasonic sweep to find a rock, then centring on it, a camera scan for Teletubbies, and a metal scan with the claw. Only metallic samples were grabbed; decoys were skipped.',
+                'The camera placement paid off here too. Because the boom looks straight down, every Teletubby appears at a consistent scale and angle, so the vision problem stayed small. That let us train a highly compact Edge Impulse FOMO model: instead of adding a Raspberry Pi, a whole extra computer with its own power and wiring, it runs on a simple ESP32-CAM. It identified Teletubbies with over 95% reliability and fed the result straight into the state machine.',
+              ],
+              figures: [
+                { src: 'images/Mars%20Teletubby%20Detection.png', caption: 'On-device detection: the ESP32-CAM picks out a Teletubby next to a boulder. (Image: Ben Rutherford-Braun)' },
+              ],
+            },
+            {
+              title: 'Precise, Repeatable Motion',
+              body: [
+                'A simple drivetrain is only as good as its control. PD loops on encoder feedback coordinated the two drive motors, so commanded distances and turns came out the same every time, which is what let the state machine trust where the robot was on the course.',
+              ],
+              videos: [
+                { src: 'video/mars-robot-pd-turn.mp4', poster: 'images/web/Mars%20PD%20Turn%20Poster.jpg', orientation: 'landscape', caption: 'A PD-controlled turn on the course. (Video: Ben Rutherford-Braun)' },
+              ],
+              figures: [],
+            },
+            {
+              title: 'Competition Day',
+              body: [
+                'The bet paid off. Our robot had the most consistent performance of any team on the course. On every run, it scored every single point we set out to get, without fail.',
+                'No other team posted the same score across all of their runs. We were the only one, and that reliability came straight from a design built to work the same way every time.',
+              ],
+              stats: [
+                { value: '100%', label: 'Targeted points scored, every run' },
+                { value: 'Only team', label: 'With an identical score on every run' },
+              ],
+              videos: [
+                { src: 'video/mars-robot-run.mp4', poster: 'images/web/Robot%20Summer%20Run%20Poster.jpg', orientation: 'landscape', caption: 'A full competition run on the ENPH 253 course.' },
+              ],
+              figures: [],
+            },
+          ],
         },
         challenges: [
           {
@@ -770,6 +912,113 @@
       section.classList.remove('hidden');
     }
 
+    // Case study (optional). Steps alternate text/figure sides on wide screens.
+    // Figures are small chart screenshots, so they're shown at no more than
+    // their natural size and open in the lightbox on click.
+    if (project.story) {
+      const s = project.story;
+      document.getElementById('story-eyebrow').textContent = s.eyebrow;
+      document.getElementById('story-title').textContent = s.title;
+      document.getElementById('story-intro').textContent = s.intro;
+      if (s.link) {
+        const a = document.createElement('a');
+        Object.assign(a, { href: s.link.href, target: '_blank', rel: 'noopener noreferrer' });
+        a.className = 'mt-8 inline-flex items-center gap-2 border-2 border-primary text-primary px-6 py-3 rounded-lg font-label text-sm font-bold tracking-widest uppercase hover:bg-primary hover:text-white transition-all';
+        a.innerHTML = `<span class="material-symbols-outlined text-sm">${s.link.icon}</span>${s.link.label}`;
+        document.getElementById('story-intro').after(a);
+      }
+      const stepsEl = document.getElementById('story-steps');
+
+      const figureEl = f => {
+        const fig = document.createElement('figure');
+        fig.className = 'space-y-3';
+        const btn = document.createElement('button');
+        btn.className = 'block w-full bg-white rounded-2xl border border-gray-200/70 shadow-lg shadow-black/5 p-4 cursor-zoom-in hover:border-primary/40 transition-colors';
+        btn.setAttribute('aria-label', `Enlarge: ${f.caption}`);
+        const img = document.createElement('img');
+        img.className = 'mx-auto w-full h-auto';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = f.caption;
+        loadImage(img, [variant(f.src, 'web'), f.src, placeholder(f.caption)]);
+        // Wide figures (tables) may scale up to fill their column so the text is legible.
+        if (!f.wide) img.addEventListener('load', () => { img.style.maxWidth = `${img.naturalWidth}px`; }, { once: true });
+        btn.appendChild(img);
+        btn.addEventListener('click', () => openLightbox([f.src, variant(f.src, 'web')], f.caption, true));
+        const cap = document.createElement('figcaption');
+        cap.className = 'font-body text-sm leading-relaxed text-on-surface-variant/80 px-1';
+        cap.textContent = f.caption;
+        fig.append(btn, cap);
+        return fig;
+      };
+
+      const videoEl = v => {
+        const fig = document.createElement('figure');
+        fig.className = 'space-y-3';
+        const vid = document.createElement('video');
+        vid.className = `rounded-2xl shadow-lg shadow-black/10 bg-black w-full mx-auto ${v.orientation === 'portrait' ? 'max-w-sm' : ''}`;
+        Object.assign(vid, { controls: true, muted: true, playsInline: true, loop: true, preload: 'none', src: v.src });
+        if (v.poster) vid.poster = v.poster;
+        const cap = document.createElement('figcaption');
+        cap.className = 'font-body text-sm leading-relaxed text-on-surface-variant/80 px-1';
+        cap.textContent = v.caption;
+        fig.append(vid, cap);
+        return fig;
+      };
+
+      s.steps.forEach((step, i) => {
+        const row = document.createElement('div');
+        row.className = 'grid grid-cols-1 lg:grid-cols-2 gap-12 items-start';
+
+        const text = document.createElement('div');
+        text.className = 'space-y-6 lg:sticky lg:top-28' + (i % 2 ? ' lg:order-2' : '');
+        text.innerHTML = `
+          <div class="flex items-baseline gap-4">
+            <span class="font-headline font-extrabold text-5xl text-primary/20 tracking-tighter">${String(i + 1).padStart(2, '0')}</span>
+            <h4 class="font-headline font-extrabold text-2xl md:text-3xl text-on-surface tracking-tight">${step.title}</h4>
+          </div>`;
+        step.body.forEach(para => {
+          const p = document.createElement('p');
+          p.className = 'font-body text-lg leading-relaxed text-on-surface-variant';
+          p.textContent = para;
+          text.appendChild(p);
+        });
+        if (step.stats) {
+          const grid = document.createElement('div');
+          grid.className = `grid grid-cols-1 ${step.stats.length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3'} gap-4 pt-2`;
+          step.stats.forEach(st => {
+            const tile = document.createElement('div');
+            tile.className = 'bg-primary/5 border border-primary/10 rounded-xl p-5';
+            // Before/after tiles strike through the old value; single-value tiles just show `value`.
+            tile.innerHTML = `
+              ${st.before ? `<div class="font-body text-sm text-on-surface-variant/70 line-through decoration-1">${st.before}</div>` : ''}
+              <div class="font-headline font-extrabold text-3xl text-primary tracking-tight">${st.after ?? st.value}</div>
+              <div class="font-label text-[0.625rem] font-extrabold tracking-widest uppercase text-on-surface-variant mt-1">${st.label}</div>`;
+            grid.appendChild(tile);
+          });
+          text.appendChild(grid);
+        }
+
+        const media = document.createElement('div');
+        media.className = 'space-y-10' + (i % 2 ? ' lg:order-1' : '');
+        (step.videos || []).forEach(v => media.appendChild(videoEl(v)));
+        step.figures.filter(f => !f.wide).forEach(f => media.appendChild(figureEl(f)));
+
+        row.append(text, media);
+        stepsEl.appendChild(row);
+
+        // Wide figures (e.g. tables) span the full width under the step.
+        const wide = step.figures.filter(f => f.wide);
+        if (wide.length) {
+          const wrap = document.createElement('div');
+          wrap.className = 'max-w-5xl mx-auto !mt-12';
+          wide.forEach(f => wrap.appendChild(figureEl(f)));
+          stepsEl.appendChild(wrap);
+        }
+      });
+      document.getElementById('story-section').classList.remove('hidden');
+    }
+
     // Challenges
     const challengesGrid = document.getElementById('challenges-grid');
     project.challenges.forEach(c => {
@@ -797,16 +1046,20 @@
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
 
+    // `enlarge` scales small chart screenshots up to fill the screen;
+    // full-size photos are only ever scaled down.
+    function openLightbox(sources, alt, enlarge = false) {
+      lightboxImg.style.width = enlarge ? 'min(90vw, calc(90vh * var(--ar, 1.6)))' : '';
+      lightboxImg.onload = () => lightboxImg.style.setProperty('--ar', lightboxImg.naturalWidth / lightboxImg.naturalHeight);
+      loadImage(lightboxImg, [...sources, placeholder(alt, 1600, 1000)]);
+      lightboxImg.alt = alt;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
     document.getElementById('fullscreen-btn').addEventListener('click', () => {
       // Fullscreen gets the untouched original, not the resized copy.
       const data = galleryImages[activeIndex];
-      loadImage(lightboxImg, [
-        data.src,
-        variant(data.src, 'web'),
-        placeholder(data.caption, 1600, 1000),
-      ]);
-      lightbox.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      openLightbox([data.src, variant(data.src, 'web')], data.caption);
     });
     document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
