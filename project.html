@@ -242,11 +242,23 @@
       </div>
     </section>
 
-    <!-- Section 4: Challenges & Solutions -->
-    <section class="max-w-7xl mx-auto px-8 py-24">
+    <!-- Section 4: Challenges & Solutions (hidden when a project has none) -->
+    <section id="challenges-section" class="max-w-7xl mx-auto px-8 py-24">
       <h2 class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-16">The Engineering Journey</h2>
       <div id="challenges-grid" class="grid grid-cols-1 md:grid-cols-2 gap-12">
         <!-- injected by JS -->
+      </div>
+    </section>
+
+    <!-- Section 5: Event photos (only rendered when the project defines them) -->
+    <section id="photos-section" class="bg-surface-container py-24 border-t border-gray-200/50 hidden">
+      <div class="max-w-7xl mx-auto px-8">
+        <h2 id="photos-eyebrow" class="font-label text-primary text-[0.75rem] font-extrabold tracking-[0.2em] uppercase mb-4"></h2>
+        <h3 id="photos-title" class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface tracking-tighter mb-6"></h3>
+        <p id="photos-intro" class="font-body text-lg leading-relaxed text-on-surface-variant max-w-2xl mb-12"></p>
+        <div id="photos-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- injected by JS -->
+        </div>
       </div>
     </section>
 
@@ -278,7 +290,8 @@
         </p>
       </div>
       <div class="flex gap-10">
-        <a href="https://github.com/lucatrinca" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">GitHub</a>
+        <a href="https://www.linkedin.com/in/luca-trinca-b4a8a8326" target="_blank" rel="noopener noreferrer" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">LinkedIn</a>
+        <a href="https://github.com/LucaTrinca" target="_blank" rel="noopener noreferrer" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">GitHub</a>
         <a href="mailto:Lucatrinca37@gmail.com" class="font-headline text-[0.6875rem] font-bold tracking-widest uppercase text-on-surface-variant hover:text-primary transition-colors underline-offset-4 hover:underline">Email</a>
       </div>
     </div>
@@ -401,38 +414,18 @@
           poster: 'images/web/Dribbler%20Demo%20Poster.jpg',
           caption: 'The dribbler roller spinning up and drawing the ball against the robot. The compliant, damped foam mount lets the roller absorb the ball\'s impact instead of rebounding it, which is what keeps the ball under control during fast autonomous maneuvers.',
         },
-        challenges: [
-          {
-            icon: 'open_with',
-            title: 'Omnidirectional Motion',
-            problem: 'The team\'s new omnidirectional drivetrain moved jerkily under autonomous navigation. Commanded body velocities had to be resolved into individual wheel speeds, and the untuned gains made strafing unstable.',
-            solution: 'Derived the drivetrain motion calculations by hand to map commanded body velocities onto individual wheel speeds, then iteratively retuned the PID gains until strafing was smooth, stable, and fluid.',
-          },
-          {
-            icon: 'sports_soccer',
-            title: 'Repeatable Kicks',
-            problem: 'The solenoid kicker was driven by pulse length, but the relationship between pulse length and ball exit speed was unknown, so firmware could not command a specific kick speed or reliably stay under the competition ceiling.',
-            solution: 'Experimentally modeled kick speed as a function of solenoid pulse length and built a calibration curve from it, letting firmware trigger repeatable kicks at target speeds up to the 8 m/s competition limit.',
-          },
-          {
-            icon: 'engineering',
-            title: 'Measuring Running Torque',
-            problem: 'Datasheet stall-torque figures say nothing about how a motor behaves under real running loads, and no off-the-shelf rig was available to measure it.',
-            solution: 'Designed and 3D-printed a modified Prony brake dynamometer in SolidWorks, using friction brake pads to transfer shaft torque to a scale under controlled slip, enabling running (non-stall) torque and efficiency measurement.',
-          },
-          {
-            icon: 'bolt',
-            title: 'Motor Characterization',
-            problem: 'The robot\'s power and current budget was unknown ahead of integration, with no data on how the three-phase motors drew current as load increased.',
-            solution: 'Integrated current sensing alongside the mechanical braking on the dynamometer to map torque against current draw across operating loads, driving per-motor tuning and setting realistic power expectations for the robot.',
-          },
-          {
-            icon: 'autorenew',
-            title: 'Ball Control at Speed',
-            problem: 'A rigidly mounted dribbler roller could not retain the ball during high-speed autonomous maneuvers. Impact energy simply bounced the ball back off the robot.',
-            solution: 'Engineered an active dribbler pairing a rotating roller with a compliant, damped foam mount with rotational freedom to absorb impact, then built test jigs to quantitatively evaluate retention and tune the damping before competition deployment.',
-          },
-        ],
+        photos: {
+          eyebrow: 'On the Road',
+          title: 'RoboCup 2026 · Incheon',
+          intro: 'Competing with the team at the 2026 International RoboCup in Incheon, South Korea, where we placed 9th.',
+          items: [
+            { src: 'images/RoboCup%202026%20Team%20Photo.jpg', caption: 'The UBC ThunderBots team on the field.', wide: true },
+            { src: 'images/RoboCup%202026%20Pit%20Work.jpg', caption: 'Troubleshooting an issue between games (deep in thought).' },
+            { src: 'images/RoboCup%202026%20Robot%20Service.jpg', caption: 'Assembling a robot at the competition venue.' },
+            { src: 'images/RoboCup%202026%20Venue.jpg', caption: 'Mapping the kick-speed velocity function right before a game.' },
+            { src: 'images/RoboCup%202026%20SSL%20Group%20Photo.jpg', caption: 'SSL all-teams photo.' },
+          ],
+        },
         next: { id: 'mars-robot', title: 'Autonomous Mars Robot' },
       },
 
@@ -1021,7 +1014,8 @@
 
     // Challenges
     const challengesGrid = document.getElementById('challenges-grid');
-    project.challenges.forEach(c => {
+    if (!project.challenges?.length) document.getElementById('challenges-section').classList.add('hidden');
+    (project.challenges || []).forEach(c => {
       const div = document.createElement('div');
       div.className = 'bg-surface-container-high p-10 rounded-2xl border border-gray-200/50';
       div.innerHTML = `
@@ -1037,6 +1031,36 @@
       `;
       challengesGrid.appendChild(div);
     });
+
+    // Event photos (optional). `wide` photos span both columns.
+    if (project.photos) {
+      const ph = project.photos;
+      document.getElementById('photos-eyebrow').textContent = ph.eyebrow;
+      document.getElementById('photos-title').textContent = ph.title;
+      document.getElementById('photos-intro').textContent = ph.intro;
+      const grid = document.getElementById('photos-grid');
+      ph.items.forEach(item => {
+        const fig = document.createElement('figure');
+        fig.className = 'space-y-3' + (item.wide ? ' md:col-span-2' : '');
+        const btn = document.createElement('button');
+        btn.className = `block w-full overflow-hidden rounded-2xl shadow-lg shadow-black/10 cursor-zoom-in group ${item.wide ? 'aspect-[16/8]' : 'aspect-[16/10]'}`;
+        btn.setAttribute('aria-label', `Enlarge: ${item.caption}`);
+        const img = document.createElement('img');
+        img.className = 'w-full h-full object-cover transition-transform duration-700 group-hover:scale-105';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.alt = item.caption;
+        loadImage(img, [variant(item.src, 'web'), item.src, placeholder(item.caption)]);
+        btn.appendChild(img);
+        btn.addEventListener('click', () => openLightbox([item.src, variant(item.src, 'web')], item.caption));
+        const cap = document.createElement('figcaption');
+        cap.className = 'font-body text-sm text-on-surface-variant/80 px-1';
+        cap.textContent = item.caption;
+        fig.append(btn, cap);
+        grid.appendChild(fig);
+      });
+      document.getElementById('photos-section').classList.remove('hidden');
+    }
 
     // Next project
     document.getElementById('next-title').textContent = project.next.title;
