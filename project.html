@@ -467,7 +467,7 @@
           { caption: 'FIG 04. Active Bandpass Filter PCB', src: 'images/H%20bridge%20photo.jpeg' },
           { caption: 'FIG 05. Power Board', src: 'images/Filter%20PCB%20photo.jpeg' },
           { caption: 'FIG 06. Robot Summer Team', src: 'images/Photo%20with%20Robot%20Summer%20Team.jpeg' },
-          { caption: 'FIG 07. Assembled Robot (Photo: Ben Rutherford-Braun)', src: 'images/Mars%20Robot%20Assembled.jpg' },
+          { caption: 'FIG 07. Assembled Robot', src: 'images/Mars%20Robot%20Assembled.jpg' },
         ],
         // The competition run video lives in the final story step instead of
         // the standalone video section.
@@ -489,13 +489,13 @@
             {
               title: 'Keeping the Mechanics Simple',
               body: [
-                'Our rule was that a mechanism only went on the robot if it was essential to scoring. Every extra moving part is another thing that can fail mid-run.',
+                'Reliability was our top priority. We would rather score the same points every run than chase a higher score on a robot that might fail. So our rule was that a mechanism only went on the robot if it was essential to scoring, because every extra moving part is another thing that can fail mid-run.',
                 'The result was a two-wheel differential drive under stacked laser-cut decks, which kept the electronics accessible and every part quick to replace. The camera rides on a fixed overhead boom looking down at the ground ahead. A single claw carries the metal-detector coil, so the same motion that checks a rock also picks it up, and collected samples drop into a central bin.',
                 'With so few mechanisms, there was very little to go wrong, and we spent the build season improving the robot instead of repairing it.',
               ],
               figures: [
-                { src: 'images/Mars%20Robot%20CAD%20Render.png', caption: 'CAD of the full robot: drive base, stacked electronics decks, camera boom, and claw with the metal-detector coil. (Image: Ben Rutherford-Braun)' },
-                { src: 'images/Mars%20Robot%20Assembled.jpg', caption: 'The assembled robot. (Photo: Ben Rutherford-Braun)' },
+                { src: 'images/Mars%20Robot%20CAD%20Render.png', caption: 'CAD of the full robot: drive base, stacked electronics decks, camera boom, and claw with the metal-detector coil.' },
+                { src: 'images/Mars%20Robot%20Assembled.jpg', caption: 'The assembled robot.' },
               ],
             },
             {
@@ -505,7 +505,7 @@
                 'The camera placement paid off here too. Because the boom looks straight down, every Teletubby appears at a consistent scale and angle, so the vision problem stayed small. That let us train a highly compact Edge Impulse FOMO model: instead of adding a Raspberry Pi, a whole extra computer with its own power and wiring, it runs on a simple ESP32-CAM. It identified Teletubbies with over 95% reliability and fed the result straight into the state machine.',
               ],
               figures: [
-                { src: 'images/Mars%20Teletubby%20Detection.png', caption: 'On-device detection: the ESP32-CAM picks out a Teletubby next to a boulder. (Image: Ben Rutherford-Braun)' },
+                { src: 'images/Mars%20Teletubby%20Detection.png', caption: 'On-device detection: the ESP32-CAM picks out a Teletubby next to a boulder.' },
               ],
             },
             {
@@ -514,7 +514,7 @@
                 'A simple drivetrain is only as good as its control. PD loops on encoder feedback coordinated the two drive motors, so commanded distances and turns came out the same every time, which is what let the state machine trust where the robot was on the course.',
               ],
               videos: [
-                { src: 'video/mars-robot-pd-turn.mp4', poster: 'images/web/Mars%20PD%20Turn%20Poster.jpg', orientation: 'landscape', caption: 'A PD-controlled turn on the course. (Video: Ben Rutherford-Braun)' },
+                { src: 'video/mars-robot-pd-turn.mp4', poster: 'images/web/Mars%20PD%20Turn%20Poster.jpg', orientation: 'landscape', caption: 'Robot commanded to turn 90°.' },
               ],
               figures: [],
             },
